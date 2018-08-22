@@ -303,42 +303,7 @@ def problem_4_4_(filename):
     utps = unsmoothed_trigrams_sents(sents)
     print("---- from ", filename, " ----")
     # calculate cummulative probabilities for start words ...
-    """
-    ssts = tri_grams_sent_starts(trigrams)          # start words
-    sstps = { gram : utps[gram] for gram in ssts }  # start word probabilities
-    sstcs = cummulative_probabilities(sstps)        # .. cummulative
-    cummulative_probability = sstcs[-1][1]
-    print("count start words:", len(ssts))
-    print("start words cummulative probabilities",
-          sstcs[:10], "\n...\n", sstcs[-10:])
-    print("start words total probability", cummulative_probability)
-    # choose a start word ...
-    entry = choose_by_probability(sstcs)
-    if entry == None:
-        print("Error: no start word found, r:", r,
-              " > ", cummulative_probability)
-        return
-    start_word = entry[0][2]
-    print("Chosen start word: ", start_word,
-          ", from entry:", (entry[0], sstps[entry[0]],),
-          "cumm prob:", entry[1])
-    start_word_sentences = [ sent for sent in sents if sent[0] == start_word]
-    print("Count of sentences starting with '",
-          start_word, "':", len(start_word_sentences))
-    i = 0
-    for sent in start_word_sentences:
-        if i < 10 and sent[0] == start_word:
-            i += 1
-            sentence = ''
-            for word in sent:
-                sentence += word + ' '
-            print(":::", i , ":::", sentence)
-    """
     # choose words until a sentence ending trigram chosen
-    """
-    bigram = (entry[0][1], entry[0][2],)   # starting bigram: ('', <start word>)
-    sentence = start_word
-    """
     bigram = ('', '',)   # starting bigram: ('', '')
     sentence = ''
     while True:
@@ -364,3 +329,21 @@ def problem_4_4_(filename):
     outFileName = filename+".sentences.txt"
     with open(outFileName, "a") as outFile:
         outFile.write(sentence+"\n\n")
+        outFile.close()
+
+# Add timestamp to output file
+def add_timestamp(outFileName):
+    from datetime import datetime
+    with open(outFileName, "a") as outFile:
+        nowStr = datetime.now().strftime("%B %d, %Y %I:%M:%S %p")
+        timestampLine = "====" + nowStr + "====\n\n"
+        outFile.write(timestampLine)
+        outFile.close()
+
+# Problem 4.4 - Generate random sentences from trigrams
+def problem_4_4():
+    texts = [ 'carroll-alice.txt', 'austen-emma.txt' ]
+    for title in texts:
+        add_timestamp(title + ".sentences.txt")
+        for i in range(10):
+            problem_4_4_(title)
