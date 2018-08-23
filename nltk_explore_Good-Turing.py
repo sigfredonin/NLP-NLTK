@@ -17,14 +17,14 @@ for count in TG_counts_dist:
 TG_counts_dist_log_many = []
 for count in TG_counts_dist:
     n = TG_counts_dist[count]
-    if n > 10:
+    if n > 9:
         logN = log(n)
         TG_counts_dist_log_many += [ (count, logN, ) ]
 
 TG_counts_dist_log_log_many = []
 for count in TG_counts_dist:
     n = TG_counts_dist[count]
-    if n > 10:
+    if n > 9:
         logN = log(n)
         TG_counts_dist_log_log_many += [ (count, log(logN), ) ]
 
