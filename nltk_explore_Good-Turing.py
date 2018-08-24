@@ -30,8 +30,16 @@ for count in TG_counts_dist:
         logN = log(n)
         TG_counts_dist_log_log_many += [ (logC, logN, ) ]
 
-scatter(*zip(*TG_counts_dist_log_log_many))
-title("Emma - Log trigram counts log distribution, Nc > 9")
+# Use linear regression to model the relation between log(c) and log(Nc)
+# Use points for Nc > 9
+from scipy.stats import linregress
+log_c, log_nc = zip(*TG_counts_dist_log_log_many)
+a, b, r_value, p_value, std_err = linregress(log_c, log_nc)
+nc_estimated = [ b + a * float(x) for x in log_c ]
+plot(log_c, log_nc, 'o', label="(log c, log Nc)")
+plot(log_c, nc_estimated, 'r', label='Fitted line')
+title("Emma - Log log trigram counts distribution, Nc > 9")
 ylabel("Log Nc")
 xlabel("Log c")
+legend()
 show()
