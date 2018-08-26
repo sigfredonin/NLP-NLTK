@@ -34,7 +34,7 @@ for count in TG_counts_dist:
     n_c_plus_one = TG_counts_dist[count + 1]
     if n_c_plus_one == 0: # there are no trigrams with count c+1
         log_n_c_plus_one = b + a * (log(count + 1))   # estimate Nc+1
-        n_c_plus_one = round(exp(log_n_c_plus_one))
+        n_c_plus_one = exp(log_n_c_plus_one)
     c_star = (count + 1) * (n_c_plus_one / n_c)
     c_c_star += [ ( count, c_star, ) ]
 TG_counts_dist_GT = dict(c_c_star)
@@ -52,3 +52,18 @@ N1_from_list_Trigram_counts = sum([ TG_dist[count] for count in TG_dist
                                     if TG_dist[count] == 1])
 print("# trigrams occurring once:", N1_from_list_Trigram_counts)
 print("Nc for c=1:", N1_from_list_Nc)
+
+# Plot c vs. c*
+c_sorted = sorted( [ count for count in TG_counts_dist ] )
+c_cs_sorted = [ (c, TG_counts_dist_GT[c],) for c in c_sorted ]
+x, y = zip(*c_cs_sorted)
+plot(x[:100],y[:100])
+c_max = c_sorted[99]
+plot(range(c_max),range(c_max),"r")
+title("Emma - trigram counts vs. Good-Turing discounted counts, first 100")
+ylabel("c*")
+xlabel("c")
+show()
+
+# List Trigram counts for Emma
+outFileName = "Emma_trigrams_GT_List.txt"
