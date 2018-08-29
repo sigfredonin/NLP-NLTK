@@ -65,7 +65,7 @@ for count in TG_counts_dist:
     c_star_est = (count + 1) * (n_c_plus_one_est / n_c_est)
     c_c_star_est += [ ( count, c_star_est, ) ]
 TG_counts_dist_GT = dict(c_c_star)
-TG_counts_dist_GT_ext = dict(c_c_star_est)
+TG_counts_dist_GT_est = dict(c_c_star_est)
 TG_dist_GT = { gram : TG_counts_dist_GT[TG_dist[gram]] for gram in TG_dist}
 
 # Compute some validations ...
@@ -88,7 +88,7 @@ x, y = zip(*c_cs_sorted)
 plot(x[:100],y[:100])
 c_max = c_sorted[99]
 plot(range(c_max),range(c_max),"r")
-title("Emma - trigram counts vs. Good-Turing discounted counts, first 100")
+title("Emma - trigram counts vs. Good-Turing discounted averaged counts, first 100")
 ylabel("c*")
 xlabel("c")
 show()
@@ -98,27 +98,29 @@ c_cs_c_ratio_sorted = [ (c, TG_counts_dist_GT[c]/c,) for c in c_sorted ]
 x, y = zip(*c_cs_c_ratio_sorted)
 plot(x[:100],y[:100])
 plot(x[:100],y[:100],'o')
-title("Emma - trigram count Good-Turing discounted ratios, first 100")
+plot([x[0],x[99]],[1,1],'b')
+title("Emma - trigram count Good-Turing discounted averaged ratios, first 100")
 ylabel("c*/c")
 xlabel("c")
 show()
 
 # Plot c vs. c* using estimated Nc and Nc+1
-c_cs_est_sorted = [ (c, TG_counts_dist_GT_ext[c],) for c in c_sorted ]
+c_cs_est_sorted = [ (c, TG_counts_dist_GT_est[c],) for c in c_sorted ]
 x, y = zip(*c_cs_est_sorted)
 plot(x[:100],y[:100])
 c_max = c_sorted[99]
 plot(range(c_max),range(c_max),"r")
-title("Emma - trigram counts vs. Good-Turing discounted counts, est Nc, first 100")
+title("Emma - trigram counts vs. Good-Turing discounted averaged counts, est Nc, first 100")
 ylabel("c*")
 xlabel("c")
 show()
 
 # Plot c vs c*/c using estimated Nc and Nc+1
-c_cs_est_c_ratio_sorted = [ (c, TG_counts_dist_GT_ext[c]/c,) for c in c_sorted ]
+c_cs_est_c_ratio_sorted = [ (c, TG_counts_dist_GT_est[c]/c,) for c in c_sorted ]
 x, y = zip(*c_cs_est_c_ratio_sorted)
 plot(x[:100],y[:100])
 plot(x[:100],y[:100],'o')
+plot([x[0],x[99]],[1,1],'b')
 title("Emma - trigram count Good-Turing discounted estimated ratios, first 100")
 ylabel("c*/c")
 xlabel("c")
