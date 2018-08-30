@@ -1,0 +1,16 @@
+5.1
+a. I/PRP need/VBP a/DT flight/NN from/IN Atlanta/NN[NNP].
+b. Does/VBZ this/DT flight/NN serve/VB dinner/NNS[NN]?
+c. I/PRP have/VB{VBP} a/DT friend/NN living/VBG in/IN Denver/NNP.
+d. Can/VPB[MD] you/PRP list/VB the/DT nonstop/JJ afternoon/NN[JJ] flights/NNS.
+
+5.2
+a. It/PRP is/VB{VBZ} a/DT nice/JJ night/NN.
+b. This/DT crap/NN(not JJ meaning lousy} game/NN is/VB{VBZ} over/IN a/DT garage/NN in/IN Fifty/NNP -second/NNP Street/NNP.
+c. ... Nobody/PRP ever/RB takes/VB{VBZ} the/DT newspapers/NNS she/PRP sells/VB{VBZ}.
+d. He/PRP is/VB{VBZ} a/DT tall/JJ, skinny/JJ guy/NN with/IN a/DT long/JJ, sad/JJ, mean/JJ{RB} -looking/JJ kisser/NN, and/CC
+   mournful/JJ voice/NN.
+e. ... I/PRP am/VB{VBP} sitting/VBG in/IN Mindy/NNP 's/POS restaurant/NN putting/VBG on/RP{IN} the/DT gefillte/NN fish/NN,
+   which/IN{WDT} is/VB{VBZ} a/DT dish/NN I/PRP am/VB{VBP} very/RB fond/JJ of/IN, ...
+f. When/WRB a/DT guy/NN and/CC a/DT doll/NN get/VB{VBP} to/TO taking/VBG peeks/NNS back/RB and/CC forth/RB at/IN each/DT
+   other/PRP, why/UH there/EX{RB} you/PRP are/VB indeed/UH{RB}.
