@@ -48,24 +48,34 @@ show()
 # Re-compute N-gram counts for Emma
 c_c_star = []
 c_c_star_est = []
+c_c_star_mixed = []
 for count in TG_counts_dist:
+    # get GT and averaged GT for Nc, Zc, and Nc+1, Zc+1
     z_c, n_c = TG_counts_dist_AVG[count]
     if count + 1 in TG_counts_dist:
         z_c_plus_one, n_c_plus_one = TG_counts_dist_AVG[count + 1]
-    else: # there are no trigrams with count c+1
-        log_z_c_plus_one = b + a * log(count + 1)   # estimate Nc+1
-        z_c_plus_one = exp(log_z_c_plus_one)
-    c_star = (count + 1) * (z_c_plus_one / n_c)
-    c_c_star += [ ( count, c_star, ) ]
-    # Recompute using estimated Nc and Nc+1
+    # compute estimated Nc and Nc+1
     log_n_c_est = b + a * log(count)                # estimate Nc
     n_c_est = exp(log_n_c_est)
     log_n_c_plus_one_est = b + a * log(count + 1)   # estimate Nc+1
     n_c_plus_one_est = exp(log_n_c_plus_one_est)
+    # compute c* using Zc and Zc+1 (use estimates if none)
+    if count + 1 in TG_counts_dist:
+        c_star = (count + 1) * (z_c_plus_one / z_c)
+    else:
+        c_star = (count + 1) * (n_c_plus_one_est / n_c_est)
+    c_c_star += [ ( count, c_star, ) ]
+    # Recompute using estimated Nc and Nc+1
     c_star_est = (count + 1) * (n_c_plus_one_est / n_c_est)
     c_c_star_est += [ ( count, c_star_est, ) ]
+    # Use c* if c < 15, otherwise use c* estimated
+    if count < 15:
+        c_c_star_mixed += [ (count, c_star, ) ]
+    else:
+        c_c_star_mixed += [ ( count, c_star_est, ) ]
 TG_counts_dist_GT = dict(c_c_star)
 TG_counts_dist_GT_est = dict(c_c_star_est)
+TG_counts_dist_GT_mixed = dict(c_c_star_mixed)
 TG_dist_GT = { gram : TG_counts_dist_GT[TG_dist[gram]] for gram in TG_dist}
 
 # Compute some validations ...
@@ -105,7 +115,7 @@ xlabel("c")
 show()
 
 # Plot c vs. c* using estimated Nc and Nc+1
-c_cs_est_sorted = [ (c, TG_counts_dist_GT_est[c],) for c in c_sorted ]
+c_cs_est_sorted = [ (c, TG_counts_dist_GT_mixed[c],) for c in c_sorted ]
 x, y = zip(*c_cs_est_sorted)
 plot(x[:100],y[:100])
 c_max = c_sorted[99]
@@ -116,7 +126,7 @@ xlabel("c")
 show()
 
 # Plot c vs c*/c using estimated Nc and Nc+1
-c_cs_est_c_ratio_sorted = [ (c, TG_counts_dist_GT_est[c]/c,) for c in c_sorted ]
+c_cs_est_c_ratio_sorted = [ (c, TG_counts_dist_GT_mixed[c]/c,) for c in c_sorted ]
 x, y = zip(*c_cs_est_c_ratio_sorted)
 plot(x[:100],y[:100])
 plot(x[:100],y[:100],'o')
