@@ -8,11 +8,23 @@ Code for NLP 2nd Edition Chapter 5 problems
     5.5 Implement Brill TBL.
         Create a small number of templates.
         Train on POS-tagged corpus.
+    5.6 Implement most-likely-tag baseline:
         Divide corpus into training and test sets,
         80:20 at random by sentence.
-    5.6 Implement most-likely-tag baseline.
-        Compute most-likely-tags for a POS-tagged corpus.
-        Run Rrill TBL starting with all words tagged 'NN'.
+        Verify that test set has words not in the
+        training set (unknown words).
+        Compute the error rate on the test set if
+        the training set words are all tagged NN.
+        Compute separate error rates for known
+        and unknown words.
+        Compute most-likely-tags using the training set.
+        Compute the error rate for known words in the test set
+        if they are tagged with the most likely tag.
+        Compute the error rate for unknown words in the test set
+        if they are tagged NN.
+        Run Rrill TBL starting with all words tagged 'NN',
+        using just the template
+            "Change a to b iff previous tag is z."
         Compute error rate on known and unknown words.
         Create 5 rules to do a better job.
         Show the difference in error rates.
@@ -39,6 +51,29 @@ def split_train_test(tagged_sents):
 
 tb_training_sents, tb_test_sents = split_train_test(tb.tagged_sents())
 
+# This way is very inefficient, O(n^2).
+def get_unknown_words_loopy(training_sents, test_sents):
+    unknown = []
+    for test_sentence in test_sents:
+        for training_sentence in training_sents:
+            unknown += [ w for (w , pos) in test_sentence
+                         if w not in training_sentence ]
+    return set(unknown)
+
+# This way is O(n)
+def get_unknown_words(training_sents, test_sents):
+    test = set()
+    for sentence in test_sents:
+        for w, tag in sentence:
+            test.add(w)
+    training = set()
+    for training_sentence in training_sents:
+        for w, tag in sentence:
+            training.add(w)
+    return [ w for w in test if w not in training ]
+
+tb_unknown_words = get_unknown_words(tb_training_sents, tb_test_sents)
+
 def get_word_tag_counts(tagged_sents):
     wtc = {}
     for sent in tagged_sents:
@@ -52,4 +87,3 @@ def get_word_tag_counts(tagged_sents):
     return wtc
 
 tb_word_tag_counts = get_word_tag_counts(tb.tagged_sents())
-
