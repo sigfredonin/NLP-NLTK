@@ -56,6 +56,12 @@ import operator
 #            (('am', 'VBP'), ('.', '.')), (('.', '.'), '')]
 tb_tagged_bigrams_sents = bi_grams_sents(tb.tagged_sents())
 
+# ------------------------------------------------------------------------
+# Split the corpus 80:20 by sentences into a training set and a test set.
+# Find the unknown words, that is, the words in the test set that are
+# not in the training set.
+# ------------------------------------------------------------------------
+
 def split_train_test(tagged_sents):
     """
     Split a list of tagged sentences into a training set and a test set,
@@ -99,7 +105,7 @@ def get_unknown_words(training_sents, test_sents):
         for w, tag in sentence:
             test.add(w)
     training = set()
-    for training_sentence in training_sents:
+    for sentence in training_sents:
         for w, tag in sentence:
             training.add(w)
     return [ w for w in test if w not in training ]
@@ -107,7 +113,10 @@ def get_unknown_words(training_sents, test_sents):
 # These are the unknown words in the treebank split.
 tb_unknown_words = get_unknown_words(tb_training_sents, tb_test_sents)
 
+# ------------------------------------------------------------------------
 # The next two methods are for finding the most frequent tag for each word.
+# ------------------------------------------------------------------------
+
 def get_word_tag_counts(tagged_sents):
     """
     Get the number of times each word is tagged with a tag.
@@ -152,6 +161,52 @@ def get_most_frequent_tag(tag_counts):
     """
     word_mf_tags = { w : max(tags.items(), key=operator.itemgetter(1))[0]
                      for w, tags in tag_counts.items() }
+    return word_mf_tags
+# ------------------------------------------------------------------------
+# Calculate errors for known and unknown words...
+# - if always tagged NN
+# - if tagged with most frequent tag for the word
+# ------------------------------------------------------------------------
+
+def count_errors_if_tagged_NN(tagged_test_sents, unknown_words):
+    """
+    Count the errors in the test set if all words tagged as nouns 'NN'.
+
+    Inputs: both are lists of sentences, each word token in each sentence
+            is tagged with the 'correct' tag.
+    Output: tuple containing error counts from test set:
+            (errors in known words, errors in unknown words)
+    """
+    errors_known = 0;
+    errors_unknown = 0;
+    for sentence in tagged_test_sents:
+        for w, tag in sentence:
+            if tag != 'NN':
+                if w in unknown_words:
+                    errors_unknown += 1
+                else:
+                    errors_known += 1
+    return (errors_known, errors_unknown,)
+
+def error_rate_if_tagged_NN(tagged_test_sents, unknown_words):
+    """
+    Compute the error rate in the test set if all words tagged as nouns 'NN'.
+    The error rate is the count errors / count words in the test set
+    (instances of words, not unique words).
+
+    Inputs: both are lists of sentences, each word token in each sentence
+            is tagged with the 'correct' tag.
+    Output: tuple containing error rate from test set:
+            (error rate in known words, error rate in unknown words)
+    """
+    errors_known, errors_unknown = count_errors_if_tagged_NN(
+        tagged_test_sents, unknown_words
+    )
+    tagged_words = [ w for w, tag in sent for sent in tagged_test_sents]
+    count_tagged_words = len(tagged_words)
+    error_rate_known = errors_known / count_tagged_words
+    error_rate_unknown = errors_unknown / count_tagged_words
+    return ( error_rate_known, error_rate_unknown, )
 
 # ------------------------------------------------------------------------
 # Tests ---
