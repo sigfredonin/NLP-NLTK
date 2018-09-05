@@ -1,0 +1,15 @@
+Penn-Treebank corpus
+-- sentence counts: training, test, sum, corpus
+3157 757 3914 3914
+-- tagged word counts: training, test, sum, corpus
+81146 19530 100676 100676
+-- unique word counts: training, test, unknown, training+unknown, corpus
+11051 4807 1357 12408 12408
+-- word tag counts: training, test, sum, corpus
+81146 19530 100676 100676
+-- NN tag error counts: known, unknown, total test
+15696 of 18053 known tagged test words
+1200 of 1477 unknown tagged test words
+16896 of 19530 total tagged test words
+-- NN tag error rates: known, unknown, total test
+0.8636988939635724 0.8843036109064112 0.8651305683563748
