@@ -202,7 +202,7 @@ def error_rate_if_tagged_NN(tagged_test_sents, unknown_words):
     errors_known, errors_unknown = count_errors_if_tagged_NN(
         tagged_test_sents, unknown_words
     )
-    tagged_words = [ w for w, tag in sent for sent in tagged_test_sents]
+    tagged_words = [ w for sent in tagged_test_sents for w, tag in sent ]
     count_tagged_words = len(tagged_words)
     error_rate_known = errors_known / count_tagged_words
     error_rate_unknown = errors_unknown / count_tagged_words
@@ -233,5 +233,5 @@ dontrunsofastTokens = nltk.word_tokenize(dontrunsofast)
 dontrunsofastTagged = nltk.pos_tag(dontrunsofastTokens)
 runTaggedSents = [ iwentforarunTagged, dontrunsofastTagged ]
 runTaggedSentsBigrams = bi_grams_sents(runTaggedSents)
-runTagCounts = get_word_tag_counts(runTaggedSents)
+runWordTagCounts = get_word_tag_counts(runTaggedSents)
 runWordMFTags = get_most_frequent_tag(runWordTagCounts)
