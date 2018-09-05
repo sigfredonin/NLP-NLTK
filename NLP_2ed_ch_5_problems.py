@@ -76,9 +76,6 @@ def split_train_test(tagged_sents):
             training += [ sent ]
     return ( training, test, )
 
-# This is an 80:20 random split of the pentree tagged sentences.
-tb_training_sents, tb_test_sents = split_train_test(tb.tagged_sents())
-
 def get_unknown_words_loopy(training_sents, test_sents):
     """
     Get the unknown words in a test set.
@@ -108,10 +105,14 @@ def get_unknown_words(training_sents, test_sents):
     for sentence in training_sents:
         for w, tag in sentence:
             training.add(w)
-    return [ w for w in test if w not in training ]
-
-# These are the unknown words in the treebank split.
-tb_unknown_words = get_unknown_words(tb_training_sents, tb_test_sents)
+    known_words = []
+    unknown_words = []
+    for word in test:
+        if word in training:
+            known_words += [ word ]
+        else:
+            unknown_words += [ word ]
+    return ( known_words, unknown_words, )
 
 # ------------------------------------------------------------------------
 # The next two methods are for finding the most frequent tag for each word.
@@ -141,9 +142,6 @@ def get_word_tag_counts(tagged_sents):
             word_entry[tag] += 1
     return wtc
 
-tb_word_tag_counts = get_word_tag_counts(tb.tagged_sents())
-tb_training_tag_counts = get_word_tag_counts(tb_training_sents)
-
 def get_most_frequent_tag(tag_counts):
     """
     Get the most frequent tag for each word in a tag counts dictionary.
@@ -162,6 +160,7 @@ def get_most_frequent_tag(tag_counts):
     word_mf_tags = { w : max(tags.items(), key=operator.itemgetter(1))[0]
                      for w, tags in tag_counts.items() }
     return word_mf_tags
+
 # ------------------------------------------------------------------------
 # Calculate errors for known and unknown words...
 # - if always tagged NN
@@ -203,12 +202,11 @@ def error_rate_if_tagged_NN(tagged_test_sents, unknown_words):
         tagged_test_sents, unknown_words
     )
     tagged_words = [ w for sent in tagged_test_sents for w, tag in sent ]
-    count_tagged_words = len(tagged_words)
-    error_rate_known = errors_known / count_tagged_words
-    error_rate_unknown = errors_unknown / count_tagged_words
-    return ( error_rate_known, error_rate_unknown, )
-
-tb_error_rates_NN = error_rate_if_tagged_NN(tb_test_sents, tb_unknown_words)
+    count_known_words = len(tagged_words) - len(unknown_words)
+    error_rate_known = errors_known / count_known_words
+    error_rate_unknown = errors_unknown / len(unknown_words)
+    error_rate_test = ( errors_known + errors_unknown ) / len(tagged_words)
+    return ( error_rate_known, error_rate_unknown, error_rate_test, )
 
 # ------------------------------------------------------------------------
 # Tests ---
@@ -235,3 +233,63 @@ runTaggedSents = [ iwentforarunTagged, dontrunsofastTagged ]
 runTaggedSentsBigrams = bi_grams_sents(runTaggedSents)
 runWordTagCounts = get_word_tag_counts(runTaggedSents)
 runWordMFTags = get_most_frequent_tag(runWordTagCounts)
+
+# NLTK treebank corpus tests.
+tb_training_sents, tb_test_sents = split_train_test(tb.tagged_sents())
+tb_tagged_words = [ (w, tag, ) for s in tb.tagged_sents()
+                               for w, tag in s]
+tb_training_tagged_words = [ (w, tag, ) for s in tb_training_sents
+                                        for w, tag in s]
+tb_test_tagged_words = [ (w, tag, ) for s in tb_test_sents
+                                    for w, tag in s]
+tb_vocabulary = set(w for w, tag in tb_tagged_words)
+tb_training_vocabulary = set(w for w, tag in tb_training_tagged_words)
+tb_test_vocabulary = set(w for w, tag in tb_test_tagged_words)
+tb_known_words, tb_unknown_words = \
+    get_unknown_words(tb_training_sents, tb_test_sents)
+tb_known_tagged_words = [ w for w, tag in tb_test_tagged_words
+                          if w in tb_known_words]
+tb_unknown_tagged_words = [ w for w, tag in tb_test_tagged_words
+                            if w in tb_unknown_words]
+tb_word_tag_counts = get_word_tag_counts(tb.tagged_sents())
+tb_word_tags_count = sum(tb_word_tag_counts[w][tag]
+                   for w in tb_word_tag_counts
+                    for tag in tb_word_tag_counts[w])
+tb_training_tag_counts = get_word_tag_counts(tb_training_sents)
+tb_training_tags_count = sum(tb_training_tag_counts[w][tag]
+                   for w in tb_training_tag_counts
+                    for tag in tb_training_tag_counts[w])
+tb_test_tag_counts = get_word_tag_counts(tb_test_sents)
+tb_test_tags_count = sum(tb_test_tag_counts[w][tag]
+                   for w in tb_test_tag_counts
+                    for tag in tb_test_tag_counts[w])
+tb_error_counts_NN = \
+    count_errors_if_tagged_NN(tb_test_sents, tb_unknown_words)
+tb_error_rates_NN = error_rate_if_tagged_NN(tb_test_sents, tb_unknown_words)
+
+print("Penn-Treebank corpus")
+print("-- sentence counts: training, test, sum, corpus")
+print(len(tb_training_sents), len(tb_test_sents),
+      len(tb_training_sents)+len(tb_test_sents),
+      len(tb.tagged_sents()))
+print("-- tagged word counts: training, test, sum, corpus")
+print(len(tb_training_tagged_words), len(tb_test_tagged_words),
+      len(tb_training_tagged_words)+len(tb_test_tagged_words),
+      len(tb_tagged_words))
+print("-- unique word counts: training, test, unknown, training+unknown, corpus")
+print(len(tb_training_vocabulary), len(tb_test_vocabulary),
+      len(tb_unknown_words), len(tb_training_vocabulary)+len(tb_unknown_words),
+      len(tb_vocabulary))
+print("-- word tag counts: training, test, sum, corpus")
+print(tb_training_tags_count, tb_test_tags_count,
+      tb_training_tags_count+tb_test_tags_count,
+      tb_word_tags_count)
+print("-- NN tag error counts: known, unknown, total test")
+print(tb_error_counts_NN[0], 'of',
+      len(tb_known_tagged_words), 'known tagged test words')
+print(tb_error_counts_NN[1], 'of',
+      len(tb_unknown_tagged_words), 'unknown tagged test words')
+print(tb_error_counts_NN[0]+tb_error_counts_NN[1], 'of',
+      len(tb_test_tagged_words), 'total tagged test words')
+print("-- NN tag error rates: known, unknown, total test")
+print(tb_error_rates_NN[0], tb_error_rates_NN[1], tb_error_rates_NN[2])
