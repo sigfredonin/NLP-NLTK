@@ -13,3 +13,29 @@ Penn-Treebank corpus
 16896 of 19530 total tagged test words
 -- NN tag error rates: known, unknown, total test
 0.8636988939635724 0.8843036109064112 0.8651305683563748
+
+... with most frequent tags test added:
+
+Penn-Treebank corpus
+-- sentence counts: training, test, sum, corpus
+3143 771 3914 3914
+-- tagged word counts: training, test, sum, corpus
+80808 19868 100676 100676
+-- unique word counts: training, test, unknown, training+unknown, corpus
+10985 4940 1423 12408 12408
+-- word tag counts: training, test, sum, corpus
+80808 19868 100676 100676
+-- ... with all words tagged 'NN'
+-- tag error counts: known, unknown, total test
+15992 of 18352 known tagged test words
+1225 of 1516 unknown tagged test words
+17217 of 19868 total tagged test words
+-- tag error rates: known, unknown, total test
+0.8670100298183789 0.8608573436401967 0.8665693577612241
+-- ... with each word tagged with its most frequent tag
+-- tag error counts: known, unknown, total test
+844 of 18352 known tagged test words
+5 of 1516 unknown tagged test words
+849 of 19868 total tagged test words
+-- tag error rates: known, unknown, total test
+0.045757657901870426 0.0035137034434293743 0.0427320314072881
