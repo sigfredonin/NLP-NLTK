@@ -142,7 +142,7 @@ def get_word_tag_counts(tagged_sents):
     return wtc
 
 tb_word_tag_counts = get_word_tag_counts(tb.tagged_sents())
-tb_training__tag_counts = get_word_tag_counts(tb_training_sents)
+tb_training_tag_counts = get_word_tag_counts(tb_training_sents)
 
 def get_most_frequent_tag(tag_counts):
     """
@@ -207,6 +207,8 @@ def error_rate_if_tagged_NN(tagged_test_sents, unknown_words):
     error_rate_known = errors_known / count_tagged_words
     error_rate_unknown = errors_unknown / count_tagged_words
     return ( error_rate_known, error_rate_unknown, )
+
+tb_error_rates_NN = error_rate_if_tagged_NN(tb_test_sents, tb_unknown_words)
 
 # ------------------------------------------------------------------------
 # Tests ---
