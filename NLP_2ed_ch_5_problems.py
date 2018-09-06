@@ -215,7 +215,7 @@ def error_rate_if_tagged_NN(tagged_test_sents, unknown_words):
 def count_errors_if_tagged_most_frequent(
     tagged_test_sents, unknown_words, most_frequent_tags):
     """
-    Count the errors in the test set if all words tagged as nouns 'NN'.
+    Count the errors in the test set if each word is tagged its most frequent tag.
 
     Inputs: both are lists of sentences, each word token in each sentence
             is tagged with the 'correct' tag.
@@ -236,7 +236,8 @@ def count_errors_if_tagged_most_frequent(
 def error_rate_if_tagged_most_frequent(
     tagged_test_sents, unknown_words, most_frequent_tags):
     """
-    Compute the error rate in the test set if all words tagged as nouns 'NN'.
+    Compute the error rate in the test set if each word is tagged its
+    most frequent tags.
     The error rate is the count errors / count words in the test set
     (instances of words, not unique words).
 
