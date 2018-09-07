@@ -260,105 +260,106 @@ def error_rate_if_tagged_most_frequent(
 # Tests ---
 # ------------------------------------------------------------------------
 
-iamsam = "I am Sam."
-iamsamTokens = nltk.word_tokenize(iamsam)
-iamsamTagged = nltk.pos_tag(iamsamTokens)
-samiam = "Sam I am."
-samiamTokens = nltk.word_tokenize(samiam)
-samiamTagged = nltk.pos_tag(samiamTokens)
-samTaggedSents = [ iamsamTagged, samiamTagged ]
-samTaggedSentsBigrams = bi_grams_sents(samTaggedSents)
-samWordTagCounts = get_word_tag_counts(samTaggedSents)
-samWordMFTags = get_most_frequent_tag(samWordTagCounts)
+if __name__ == '__main__':
+    iamsam = "I am Sam."
+    iamsamTokens = nltk.word_tokenize(iamsam)
+    iamsamTagged = nltk.pos_tag(iamsamTokens)
+    samiam = "Sam I am."
+    samiamTokens = nltk.word_tokenize(samiam)
+    samiamTagged = nltk.pos_tag(samiamTokens)
+    samTaggedSents = [ iamsamTagged, samiamTagged ]
+    samTaggedSentsBigrams = bi_grams_sents(samTaggedSents)
+    samWordTagCounts = get_word_tag_counts(samTaggedSents)
+    samWordMFTags = get_most_frequent_tag(samWordTagCounts)
 
-iwentforarun="I went for a run."
-iwentforarunTokens = nltk.word_tokenize(iwentforarun)
-iwentforarunTagged = nltk.pos_tag(iwentforarunTokens)
-dontrunsofast = "Don't run so fast!"
-dontrunsofastTokens = nltk.word_tokenize(dontrunsofast)
-dontrunsofastTagged = nltk.pos_tag(dontrunsofastTokens)
-runTaggedSents = [ iwentforarunTagged, dontrunsofastTagged ]
-runTaggedSentsBigrams = bi_grams_sents(runTaggedSents)
-runWordTagCounts = get_word_tag_counts(runTaggedSents)
-runWordMFTags = get_most_frequent_tag(runWordTagCounts)
+    iwentforarun="I went for a run."
+    iwentforarunTokens = nltk.word_tokenize(iwentforarun)
+    iwentforarunTagged = nltk.pos_tag(iwentforarunTokens)
+    dontrunsofast = "Don't run so fast!"
+    dontrunsofastTokens = nltk.word_tokenize(dontrunsofast)
+    dontrunsofastTagged = nltk.pos_tag(dontrunsofastTokens)
+    runTaggedSents = [ iwentforarunTagged, dontrunsofastTagged ]
+    runTaggedSentsBigrams = bi_grams_sents(runTaggedSents)
+    runWordTagCounts = get_word_tag_counts(runTaggedSents)
+    runWordMFTags = get_most_frequent_tag(runWordTagCounts)
 
-# NLTK treebank corpus tests.
-tb_training_sents, tb_test_sents = split_train_test(tb.tagged_sents())
-tb_tagged_words = [ (w, tag, ) for s in tb.tagged_sents()
-                               for w, tag in s]
-tb_training_tagged_words = [ (w, tag, ) for s in tb_training_sents
+    # NLTK treebank corpus tests.
+    tb_training_sents, tb_test_sents = split_train_test(tb.tagged_sents())
+    tb_tagged_words = [ (w, tag, ) for s in tb.tagged_sents()
+                                   for w, tag in s]
+    tb_training_tagged_words = [ (w, tag, ) for s in tb_training_sents
+                                            for w, tag in s]
+    tb_test_tagged_words = [ (w, tag, ) for s in tb_test_sents
                                         for w, tag in s]
-tb_test_tagged_words = [ (w, tag, ) for s in tb_test_sents
-                                    for w, tag in s]
-tb_vocabulary = set(w for w, tag in tb_tagged_words)
-tb_training_vocabulary = set(w for w, tag in tb_training_tagged_words)
-tb_test_vocabulary = set(w for w, tag in tb_test_tagged_words)
-tb_known_words, tb_unknown_words = \
-    get_unknown_words(tb_training_sents, tb_test_sents)
-tb_known_tagged_words = [ w for w, tag in tb_test_tagged_words
-                          if w in tb_known_words]
-tb_unknown_tagged_words = [ w for w, tag in tb_test_tagged_words
-                            if w in tb_unknown_words]
-tb_word_tag_counts = get_word_tag_counts(tb.tagged_sents())
-tb_word_tags_count = sum(tb_word_tag_counts[w][tag]
-                   for w in tb_word_tag_counts
-                   for tag in tb_word_tag_counts[w])
-tb_training_tag_counts = get_word_tag_counts(tb_training_sents)
-tb_training_tags_count = sum(tb_training_tag_counts[w][tag]
-                   for w in tb_training_tag_counts
-                   for tag in tb_training_tag_counts[w])
-tb_test_tag_counts = get_word_tag_counts(tb_test_sents)
-tb_test_tags_count = sum(tb_test_tag_counts[w][tag]
-                   for w in tb_test_tag_counts
-                   for tag in tb_test_tag_counts[w])
-tb_error_counts_NN = \
-    count_errors_if_tagged_NN(tb_test_sents, tb_unknown_words)
-tb_error_rates_NN = error_rate_if_tagged_NN(tb_test_sents, tb_unknown_words)
-tb_most_frequent_tags = get_most_frequent_tag(tb_word_tag_counts)
-tb_error_counts_most_frequent = \
-    count_errors_if_tagged_most_frequent(tb_test_sents, tb_unknown_words, \
-                                          tb_most_frequent_tags)
-tb_error_rates_most_frequent = \
-    error_rate_if_tagged_most_frequent(tb_test_sents, tb_unknown_words, \
-                                        tb_most_frequent_tags)
+    tb_vocabulary = set(w for w, tag in tb_tagged_words)
+    tb_training_vocabulary = set(w for w, tag in tb_training_tagged_words)
+    tb_test_vocabulary = set(w for w, tag in tb_test_tagged_words)
+    tb_known_words, tb_unknown_words = \
+        get_unknown_words(tb_training_sents, tb_test_sents)
+    tb_known_tagged_words = [ w for w, tag in tb_test_tagged_words
+                              if w in tb_known_words]
+    tb_unknown_tagged_words = [ w for w, tag in tb_test_tagged_words
+                                if w in tb_unknown_words]
+    tb_word_tag_counts = get_word_tag_counts(tb.tagged_sents())
+    tb_word_tags_count = sum(tb_word_tag_counts[w][tag]
+                       for w in tb_word_tag_counts
+                       for tag in tb_word_tag_counts[w])
+    tb_training_tag_counts = get_word_tag_counts(tb_training_sents)
+    tb_training_tags_count = sum(tb_training_tag_counts[w][tag]
+                       for w in tb_training_tag_counts
+                       for tag in tb_training_tag_counts[w])
+    tb_test_tag_counts = get_word_tag_counts(tb_test_sents)
+    tb_test_tags_count = sum(tb_test_tag_counts[w][tag]
+                       for w in tb_test_tag_counts
+                       for tag in tb_test_tag_counts[w])
+    tb_error_counts_NN = \
+        count_errors_if_tagged_NN(tb_test_sents, tb_unknown_words)
+    tb_error_rates_NN = error_rate_if_tagged_NN(tb_test_sents, tb_unknown_words)
+    tb_most_frequent_tags = get_most_frequent_tag(tb_word_tag_counts)
+    tb_error_counts_most_frequent = \
+        count_errors_if_tagged_most_frequent(tb_test_sents, tb_unknown_words, \
+                                              tb_most_frequent_tags)
+    tb_error_rates_most_frequent = \
+        error_rate_if_tagged_most_frequent(tb_test_sents, tb_unknown_words, \
+                                            tb_most_frequent_tags)
 
-print("Penn-Treebank corpus")
-print("-- sentence counts: training, test, sum, corpus")
-print(len(tb_training_sents), len(tb_test_sents),
-      len(tb_training_sents)+len(tb_test_sents),
-      len(tb.tagged_sents()))
-print("-- tagged word counts: training, test, sum, corpus")
-print(len(tb_training_tagged_words), len(tb_test_tagged_words),
-      len(tb_training_tagged_words)+len(tb_test_tagged_words),
-      len(tb_tagged_words))
-print("-- unique word counts: training, test, unknown, training+unknown, corpus")
-print(len(tb_training_vocabulary), len(tb_test_vocabulary),
-      len(tb_unknown_words), len(tb_training_vocabulary)+len(tb_unknown_words),
-      len(tb_vocabulary))
-print("-- word tag counts: training, test, sum, corpus")
-print(tb_training_tags_count, tb_test_tags_count,
-      tb_training_tags_count+tb_test_tags_count,
-      tb_word_tags_count)
+    print("Penn-Treebank corpus")
+    print("-- sentence counts: training, test, sum, corpus")
+    print(len(tb_training_sents), len(tb_test_sents),
+          len(tb_training_sents)+len(tb_test_sents),
+          len(tb.tagged_sents()))
+    print("-- tagged word counts: training, test, sum, corpus")
+    print(len(tb_training_tagged_words), len(tb_test_tagged_words),
+          len(tb_training_tagged_words)+len(tb_test_tagged_words),
+          len(tb_tagged_words))
+    print("-- unique word counts: training, test, unknown, training+unknown, corpus")
+    print(len(tb_training_vocabulary), len(tb_test_vocabulary),
+          len(tb_unknown_words), len(tb_training_vocabulary)+len(tb_unknown_words),
+          len(tb_vocabulary))
+    print("-- word tag counts: training, test, sum, corpus")
+    print(tb_training_tags_count, tb_test_tags_count,
+          tb_training_tags_count+tb_test_tags_count,
+          tb_word_tags_count)
 
-print("-- ... with all words tagged 'NN'")
-print("-- tag error counts: known, unknown, total test")
-print(tb_error_counts_NN[0], 'of',
-      len(tb_known_tagged_words), 'known tagged test words')
-print(tb_error_counts_NN[1], 'of',
-      len(tb_unknown_tagged_words), 'unknown tagged test words')
-print(tb_error_counts_NN[0]+tb_error_counts_NN[1], 'of',
-      len(tb_test_tagged_words), 'total tagged test words')
-print("-- tag error rates: known, unknown, total test")
-print(tb_error_rates_NN[0], tb_error_rates_NN[1], tb_error_rates_NN[2])
+    print("-- ... with all words tagged 'NN'")
+    print("-- tag error counts: known, unknown, total test")
+    print(tb_error_counts_NN[0], 'of',
+          len(tb_known_tagged_words), 'known tagged test words')
+    print(tb_error_counts_NN[1], 'of',
+          len(tb_unknown_tagged_words), 'unknown tagged test words')
+    print(tb_error_counts_NN[0]+tb_error_counts_NN[1], 'of',
+          len(tb_test_tagged_words), 'total tagged test words')
+    print("-- tag error rates: known, unknown, total test")
+    print(tb_error_rates_NN[0], tb_error_rates_NN[1], tb_error_rates_NN[2])
 
-print("-- ... with each word tagged with its most frequent tag")
-print("-- tag error counts: known, unknown, total test")
-print(tb_error_counts_most_frequent[0], 'of',
-      len(tb_known_tagged_words), 'known tagged test words')
-print(tb_error_counts_most_frequent[1], 'of',
-      len(tb_unknown_tagged_words), 'unknown tagged test words')
-print(tb_error_counts_most_frequent[0]+tb_error_counts_most_frequent[1], 'of',
-      len(tb_test_tagged_words), 'total tagged test words')
-print("-- tag error rates: known, unknown, total test")
-print(tb_error_rates_most_frequent[0], tb_error_rates_most_frequent[1],
-      tb_error_rates_most_frequent[2])
+    print("-- ... with each word tagged with its most frequent tag")
+    print("-- tag error counts: known, unknown, total test")
+    print(tb_error_counts_most_frequent[0], 'of',
+          len(tb_known_tagged_words), 'known tagged test words')
+    print(tb_error_counts_most_frequent[1], 'of',
+          len(tb_unknown_tagged_words), 'unknown tagged test words')
+    print(tb_error_counts_most_frequent[0]+tb_error_counts_most_frequent[1], 'of',
+          len(tb_test_tagged_words), 'total tagged test words')
+    print("-- tag error rates: known, unknown, total test")
+    print(tb_error_rates_most_frequent[0], tb_error_rates_most_frequent[1],
+          tb_error_rates_most_frequent[2])
