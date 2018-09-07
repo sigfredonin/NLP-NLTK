@@ -61,7 +61,7 @@ class BrillTBL:
         self.transforms_queue = []
 
     # Display a transform instance
-    def printTransform(transform):
+    def printTransform(self, transform):
         typeT, fromTag, toTag, zTag, wTag, desc = transform[0]
         score = transform[1]
         description = desc % (fromTag, toTag, zTag, wTag, )
@@ -147,9 +147,10 @@ class BrillTBL:
         count_bad_transforms[(START_TAG, '')] = 0
         # iterate over all tag pairs ...
         for fromTag in self.tagset:
+            print("... trying tag:", fromTag)            
             for toTag in self.tagset:
                 # test the default transform, context just preceding tag
-                test_transform_m1(fromTag, toTag,
+                self.test_transform_m1(fromTag, toTag,
                         count_good_transforms, count_bad_transforms)
                 # Find the best tags z and w among those encountered,
                 # the one that produced the most improvements in the
@@ -168,6 +169,7 @@ class BrillTBL:
                                  DEFAULT_TEMPLATE[5]
                                ]
                     best_transform = ( instance, bestScore, )
+                    self.printTransform(best_transform)
         return best_transform
 
         # Apply a transform instance to the corpus,
@@ -237,4 +239,10 @@ if __name__ == '__main__':
                 if count_bad_transforms[k] > 0 ]
     print('good z:', good_z)
     print('bad z:', bad_z)
+    
+    # Test get_best_instance()
+    best_transform_DEFAULT = tagger.get_best_instance(DEFAULT_TEMPLATE)
+    typeT, fT, tT, zT, wT, desc = best_transform_DEFAULT[0]
+    best_score_DEFAULT = best_transform_DEFAULT[1]
+    tagger.printTransform(best_transform_DEFAULT)
     
