@@ -151,3 +151,18 @@ class BrillTBL:
                                ]
                     best_transform = ( instance, bestScore, )
         return best_transform
+
+        # Apply a transform instance to the corpus,
+        # updating the current tagging.
+    def apply_transform(self, transform):
+        """
+        Apply the transform with context just the preceding tag.
+        """
+        type, fromTag, toTag, zTag, wTag, desc = transform[0]
+        previous_tag = START_TAG
+        for pos in range(len(self.tagged_words)):
+            current_tag = self.tagged_words[pos][1]
+            if pos > 0
+                previous_tag = self.tagged_words[pos-1][1]
+            if current_tag == tagFrom and previous_tag == zTag:
+                self.tagged_words[pos][1] = toTag
