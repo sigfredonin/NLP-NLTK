@@ -214,6 +214,12 @@ if __name__ == '__main__':
                       tb_training_tagged_words,
                       tb_tagset,
                       "NLTK Penn-Treebank initially tagged NN")
+    print("Desccription:   ", tagger.name)
+    print("Initial Tagging:", len(tagger.tagged_words),
+          tagger.tagged_words[:10])
+    print("True Tagging:   ", len(tagger.tagged_words_true),
+          tagger.tagged_words_true[:10])
+    print("Tag Set:", len(tagger.tagset), tagger.tagset)
 
     # Test test_transform_m1()
     count_good_transforms = { (tag, '') : 0 for tag in tagger.tagset }
