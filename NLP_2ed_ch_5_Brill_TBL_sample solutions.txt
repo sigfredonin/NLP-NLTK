@@ -1,0 +1,102 @@
+Desccription:    NLTK Penn-Treebank initially tagged with most frequent tag
+Initial Tagging: 80604 [('Pierre', 'NNP'), ('Vinken', 'NNP'), (',', ','), ('61', 'CD'), ('years', 'NNS'), ('old', 'JJ'), (',', ','), ('will', 'MD'), ('join', 'VB'), ('the', 'DT')]
+True Tagging:    80604 [('Pierre', 'NNP'), ('Vinken', 'NNP'), (',', ','), ('61', 'CD'), ('years', 'NNS'), ('old', 'JJ'), (',', ','), ('will', 'MD'), ('join', 'VB'), ('the', 'DT')]
+Tag Set: 46 {'MD', ':', 'JJR', 'VBN', 'IN', 'WRB', 'NNPS', '-LRB-', 'JJS', 'PDT', '$', 'CD', 'VBZ', 'RP', 'VB', 'CC', 'UH', '.', '-NONE-', '``', 'NNS', "''", 'SYM', 'PRP', 'VBD', 'WP', 'DT', 'RBR', 'RBS', 'RB', 'PRP$', 'WP$', 'VBP', 'NN', 'NNP', 'JJ', '-RRB-', 'WDT', 'FW', 'VBG', 'EX', 'LS', 'POS', ',', '#', 'TO'}
+good z: [(('IN', ''), 1), (('CC', ''), 1), (('.', ''), 3), (('DT', ''), 1), (('PRP$', ''), 1), (('NNP', ''), 9), (('JJ', ''), 1)]
+bad z: [((':', ''), 11), (('JJR', ''), 57), (('VBN', ''), 109), (('IN', ''), 856), (('WRB', ''), 7), (('NNPS', ''), 4), (('-LRB-', ''), 2), (('JJS', ''), 36), (('CD', ''), 565), (('VBZ', ''), 55), (('RP', ''), 9), (('VB', ''), 150), (('CC', ''), 199), (('.', ''), 99), (('-NONE-', ''), 85), (('``', ''), 50), (('NNS', ''), 108), (("''", ''), 26), (('PRP', ''), 2), (('VBD', ''), 74), (('WP', ''), 4), (('DT', ''), 2922), (('RB', ''), 44), (('PRP$', ''), 260), (('WP$', ''), 7), (('VBP', ''), 21), (('NN', ''), 1329), (('NNP', ''), 436), (('JJ', ''), 1959), (('-RRB-', ''), 5), (('WDT', ''), 2), (('VBG', ''), 161), (('POS', ''), 272), ((',', ''), 186), (('TO', ''), 48)]
+... trying from-tag: MD
+NIL: Don't change the tag. score= 0
+... trying from-tag: :
+NIL: Don't change the tag. score= 0
+... trying from-tag: JJR
+NIL: Don't change the tag. score= 0
+m1: Change JJR to RBR if preceding tag is MD. score= 1
+... trying from-tag: VBN
+m1: Change JJR to RBR if preceding tag is MD. score= 1
+m1: Change VBN to VB if preceding tag is MD. score= 9
+... trying from-tag: IN
+m1: Change VBN to VB if preceding tag is MD. score= 9
+m1: Change IN to VB if preceding tag is MD. score= 14
+... trying from-tag: WRB
+m1: Change IN to VB if preceding tag is MD. score= 14
+... trying from-tag: NNPS
+m1: Change IN to VB if preceding tag is MD. score= 14
+... trying from-tag: -LRB-
+m1: Change IN to VB if preceding tag is MD. score= 14
+... trying from-tag: JJS
+m1: Change IN to VB if preceding tag is MD. score= 14
+... trying from-tag: PDT
+m1: Change IN to VB if preceding tag is MD. score= 14
+... trying from-tag: $
+m1: Change IN to VB if preceding tag is MD. score= 14
+... trying from-tag: CD
+m1: Change IN to VB if preceding tag is MD. score= 14
+... trying from-tag: VBZ
+m1: Change IN to VB if preceding tag is MD. score= 14
+... trying from-tag: RP
+m1: Change IN to VB if preceding tag is MD. score= 14
+... trying from-tag: VB
+m1: Change IN to VB if preceding tag is MD. score= 14
+... trying from-tag: CC
+m1: Change IN to VB if preceding tag is MD. score= 14
+... trying from-tag: UH
+m1: Change IN to VB if preceding tag is MD. score= 14
+... trying from-tag: .
+m1: Change IN to VB if preceding tag is MD. score= 14
+... trying from-tag: -NONE-
+m1: Change IN to VB if preceding tag is MD. score= 14
+... trying from-tag: ``
+m1: Change IN to VB if preceding tag is MD. score= 14
+... trying from-tag: NNS
+m1: Change IN to VB if preceding tag is MD. score= 14
+... trying from-tag: ''
+m1: Change IN to VB if preceding tag is MD. score= 14
+... trying from-tag: SYM
+m1: Change IN to VB if preceding tag is MD. score= 14
+... trying from-tag: PRP
+m1: Change IN to VB if preceding tag is MD. score= 14
+... trying from-tag: VBD
+m1: Change IN to VB if preceding tag is MD. score= 14
+... trying from-tag: WP
+m1: Change IN to VB if preceding tag is MD. score= 14
+... trying from-tag: DT
+m1: Change IN to VB if preceding tag is MD. score= 14
+... trying from-tag: RBR
+m1: Change IN to VB if preceding tag is MD. score= 14
+... trying from-tag: RBS
+m1: Change IN to VB if preceding tag is MD. score= 14
+... trying from-tag: RB
+m1: Change IN to VB if preceding tag is MD. score= 14
+... trying from-tag: PRP$
+m1: Change IN to VB if preceding tag is MD. score= 14
+... trying from-tag: WP$
+m1: Change IN to VB if preceding tag is MD. score= 14
+... trying from-tag: VBP
+m1: Change IN to VB if preceding tag is MD. score= 14
+... trying from-tag: NN
+m1: Change IN to VB if preceding tag is MD. score= 14
+... trying from-tag: NNP
+m1: Change IN to VB if preceding tag is MD. score= 14
+... trying from-tag: JJ
+m1: Change IN to VB if preceding tag is MD. score= 14
+... trying from-tag: -RRB-
+m1: Change IN to VB if preceding tag is MD. score= 14
+... trying from-tag: WDT
+m1: Change IN to VB if preceding tag is MD. score= 14
+... trying from-tag: FW
+m1: Change IN to VB if preceding tag is MD. score= 14
+... trying from-tag: VBG
+m1: Change IN to VB if preceding tag is MD. score= 14
+... trying from-tag: EX
+m1: Change IN to VB if preceding tag is MD. score= 14
+... trying from-tag: LS
+m1: Change IN to VB if preceding tag is MD. score= 14
+... trying from-tag: POS
+m1: Change IN to VB if preceding tag is MD. score= 14
+... trying from-tag: ,
+m1: Change IN to VB if preceding tag is MD. score= 14
+... trying from-tag: #
+m1: Change IN to VB if preceding tag is MD. score= 14
+... trying from-tag: TO
+m1: Change IN to VB if preceding tag is MD. score= 14
+m1: Change IN to VB if preceding tag is MD. score= 14
