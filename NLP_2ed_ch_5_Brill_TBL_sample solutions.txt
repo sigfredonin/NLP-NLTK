@@ -100,3 +100,571 @@ m1: Change IN to VB if preceding tag is MD. score= 14
 ... trying from-tag: TO
 m1: Change IN to VB if preceding tag is MD. score= 14
 m1: Change IN to VB if preceding tag is MD. score= 14
+
+======= RESTART: C:\Users\Alice\NLP\NLP-NLTK\NLP_2ed_ch_5_Brill_TBL.py =======
+====September 08, 2018 04:13:45 PM====
+====September 08, 2018 04:13:50 PM====
+Description:    NLTK Penn-Treebank initially tagged with most frequent tag
+Initial Tagging: 80133 [('Mr.', 'NNP'), ('Vinken', 'NNP'), ('is', 'VBZ'), ('chairman', 'NN'), ('of', 'IN'), ('Elsevier', 'NNP'), ('N.V.', 'NNP'), (',', ','), ('the', 'DT'), ('Dutch', 'JJ')]
+True Tagging:    80133 [('Mr.', 'NNP'), ('Vinken', 'NNP'), ('is', 'VBZ'), ('chairman', 'NN'), ('of', 'IN'), ('Elsevier', 'NNP'), ('N.V.', 'NNP'), (',', ','), ('the', 'DT'), ('Dutch', 'NNP')]
+Tag Set: 46 {'POS', 'CC', '``', 'WRB', 'PRP', 'DT', 'NN', 'JJR', 'RBS', '$', 'PRP$', 'MD', 'WP', 'PDT', 'NNPS', 'RBR', 'FW', 'TO', 'EX', ',', 'SYM', "''", 'VBP', 'WP$', 'UH', 'VBZ', 'NNP', 'NNS', '-RRB-', '-NONE-', 'WDT', 'VBG', 'VB', 'IN', 'RB', '#', 'JJS', 'JJ', '-LRB-', 'RP', ':', 'LS', '.', 'CD', 'VBD', 'VBN'}
+====September 08, 2018 04:13:50 PM====
+good z: [(('CC', ''), 1), (('DT', ''), 1), (('PRP$', ''), 1), (('NNP', ''), 11), (('JJ', ''), 1), (('.', ''), 3)]
+bad z: [(('POS', ''), 266), (('CC', ''), 215), (('``', ''), 51), (('WRB', ''), 7), (('PRP', ''), 3), (('DT', ''), 2937), (('NN', ''), 1344), (('JJR', ''), 52), (('PRP$', ''), 266), (('WP', ''), 3), (('NNPS', ''), 7), (('TO', ''), 55), ((',', ''), 186), (("''", ''), 24), (('VBP', ''), 19), (('WP$', ''), 6), (('VBZ', ''), 50), (('NNP', ''), 435), (('NNS', ''), 120), (('-RRB-', ''), 4), (('-NONE-', ''), 86), (('WDT', ''), 2), (('VBG', ''), 162), (('VB', ''), 134), (('IN', ''), 857), (('RB', ''), 41), (('JJS', ''), 39), (('JJ', ''), 1916), (('-LRB-', ''), 1), (('RP', ''), 6), ((':', ''), 14), (('.', ''), 97), (('CD', ''), 536), (('VBD', ''), 72), (('VBN', ''), 124)]
+====September 08, 2018 04:13:50 PM====
+... trying from-tag: POS
+m1: Change POS to '' if preceding tag is .. score= 3
+m1: Change POS to VBZ if preceding tag is PRP. score= 42
+... trying from-tag: CC
+... trying from-tag: ``
+... trying from-tag: WRB
+... trying from-tag: PRP
+... trying from-tag: DT
+... trying from-tag: NN
+... trying from-tag: JJR
+... trying from-tag: RBS
+... trying from-tag: $
+... trying from-tag: PRP$
+... trying from-tag: MD
+... trying from-tag: WP
+... trying from-tag: PDT
+... trying from-tag: NNPS
+... trying from-tag: RBR
+... trying from-tag: FW
+... trying from-tag: TO
+... trying from-tag: EX
+... trying from-tag: ,
+... trying from-tag: SYM
+... trying from-tag: ''
+... trying from-tag: VBP
+... trying from-tag: WP$
+... trying from-tag: UH
+... trying from-tag: VBZ
+... trying from-tag: NNP
+... trying from-tag: NNS
+... trying from-tag: -RRB-
+... trying from-tag: -NONE-
+... trying from-tag: WDT
+... trying from-tag: VBG
+... trying from-tag: VB
+... trying from-tag: IN
+... trying from-tag: RB
+... trying from-tag: #
+... trying from-tag: JJS
+... trying from-tag: JJ
+... trying from-tag: -LRB-
+... trying from-tag: RP
+... trying from-tag: :
+... trying from-tag: LS
+... trying from-tag: .
+... trying from-tag: CD
+... trying from-tag: VBD
+... trying from-tag: VBN
+--> m1: Change POS to VBZ if preceding tag is PRP. score= 42
+m1: Change POS to VBZ if preceding tag is PRP. score= 42
+... trying from-tag: POS
+m1: Change POS to '' if preceding tag is .. score= 3
+m1: Change POS to VBZ if preceding tag is EX. score= 12
+... trying from-tag: CC
+... trying from-tag: ``
+... trying from-tag: WRB
+... trying from-tag: PRP
+... trying from-tag: DT
+... trying from-tag: NN
+... trying from-tag: JJR
+... trying from-tag: RBS
+... trying from-tag: $
+... trying from-tag: PRP$
+... trying from-tag: MD
+... trying from-tag: WP
+... trying from-tag: PDT
+... trying from-tag: NNPS
+... trying from-tag: RBR
+... trying from-tag: FW
+... trying from-tag: TO
+... trying from-tag: EX
+... trying from-tag: ,
+... trying from-tag: SYM
+... trying from-tag: ''
+... trying from-tag: VBP
+... trying from-tag: WP$
+... trying from-tag: UH
+... trying from-tag: VBZ
+... trying from-tag: NNP
+... trying from-tag: NNS
+... trying from-tag: -RRB-
+... trying from-tag: -NONE-
+... trying from-tag: WDT
+... trying from-tag: VBG
+... trying from-tag: VB
+... trying from-tag: IN
+... trying from-tag: RB
+... trying from-tag: #
+... trying from-tag: JJS
+... trying from-tag: JJ
+... trying from-tag: -LRB-
+... trying from-tag: RP
+... trying from-tag: :
+... trying from-tag: LS
+... trying from-tag: .
+... trying from-tag: CD
+... trying from-tag: VBD
+... trying from-tag: VBN
+--> m1: Change POS to VBZ if preceding tag is EX. score= 12
+m1: Change POS to VBZ if preceding tag is EX. score= 12
+==> m1: Change POS to VBZ if preceding tag is EX. score= 12
+m1: Change POS to VBZ if preceding tag is PRP. score= 42
+m1: Change POS to VBZ if preceding tag is EX. score= 12
+====September 08, 2018 04:17:03 PM====
+====September 08, 2018 04:17:09 PM====
+Description:    NLTK Penn-Treebank initially tagged with most frequent tag
+Initial Tagging: 80029 [('Rudolph', 'NNP'), ('Agnew', 'NNP'), (',', ','), ('55', 'CD'), ('years', 'NNS'), ('old', 'JJ'), ('and', 'CC'), ('former', 'JJ'), ('chairman', 'NN'), ('of', 'IN')]
+True Tagging:    80029 [('Rudolph', 'NNP'), ('Agnew', 'NNP'), (',', ','), ('55', 'CD'), ('years', 'NNS'), ('old', 'JJ'), ('and', 'CC'), ('former', 'JJ'), ('chairman', 'NN'), ('of', 'IN')]
+Tag Set: 46 {'POS', 'CC', '``', 'WRB', 'PRP', 'DT', 'NN', 'JJR', 'RBS', '$', 'PRP$', 'MD', 'WP', 'PDT', 'NNPS', 'RBR', 'FW', 'TO', 'EX', ',', 'SYM', "''", 'VBP', 'WP$', 'UH', 'VBZ', 'NNP', 'NNS', '-RRB-', '-NONE-', 'WDT', 'VBG', 'VB', 'IN', 'RB', '#', 'JJS', 'JJ', '-LRB-', 'RP', ':', 'LS', '.', 'CD', 'VBD', 'VBN'}
+====September 08, 2018 04:17:09 PM====
+good z: [(('CC', ''), 1), (('PRP$', ''), 1), (('NNP', ''), 10), (('.', ''), 2)]
+bad z: [(('POS', ''), 258), (('CC', ''), 207), (('``', ''), 57), (('WRB', ''), 7), (('PRP', ''), 2), (('DT', ''), 2934), (('NN', ''), 1313), (('JJR', ''), 61), (('PRP$', ''), 253), (('WP', ''), 4), (('NNPS', ''), 6), (('TO', ''), 48), ((',', ''), 180), (("''", ''), 29), (('VBP', ''), 19), (('WP$', ''), 6), (('VBZ', ''), 61), (('NNP', ''), 426), (('NNS', ''), 116), (('-RRB-', ''), 5), (('-NONE-', ''), 107), (('WDT', ''), 2), (('VBG', ''), 153), (('VB', ''), 145), (('IN', ''), 876), (('RB', ''), 40), (('JJS', ''), 39), (('JJ', ''), 1944), (('-LRB-', ''), 1), (('RP', ''), 8), ((':', ''), 10), (('.', ''), 102), (('CD', ''), 523), (('VBD', ''), 74), (('VBN', ''), 104)]
+====September 08, 2018 04:17:09 PM====
+... trying from-tag: POS
+m1: Change POS to '' if preceding tag is .. score= 3
+m1: Change POS to VBZ if preceding tag is PRP. score= 41
+... trying from-tag: CC
+... trying from-tag: ``
+... trying from-tag: WRB
+... trying from-tag: PRP
+... trying from-tag: DT
+... trying from-tag: NN
+... trying from-tag: JJR
+... trying from-tag: RBS
+... trying from-tag: $
+... trying from-tag: PRP$
+... trying from-tag: MD
+... trying from-tag: WP
+... trying from-tag: PDT
+... trying from-tag: NNPS
+... trying from-tag: RBR
+... trying from-tag: FW
+... trying from-tag: TO
+... trying from-tag: EX
+... trying from-tag: ,
+... trying from-tag: SYM
+... trying from-tag: ''
+... trying from-tag: VBP
+... trying from-tag: WP$
+... trying from-tag: UH
+... trying from-tag: VBZ
+... trying from-tag: NNP
+... trying from-tag: NNS
+... trying from-tag: -RRB-
+... trying from-tag: -NONE-
+... trying from-tag: WDT
+... trying from-tag: VBG
+... trying from-tag: VB
+... trying from-tag: IN
+... trying from-tag: RB
+... trying from-tag: #
+... trying from-tag: JJS
+... trying from-tag: JJ
+... trying from-tag: -LRB-
+... trying from-tag: RP
+... trying from-tag: :
+... trying from-tag: LS
+... trying from-tag: .
+... trying from-tag: CD
+... trying from-tag: VBD
+... trying from-tag: VBN
+--> m1: Change POS to VBZ if preceding tag is PRP. score= 41
+m1: Change POS to VBZ if preceding tag is PRP. score= 41
+... trying from-tag: POS
+m1: Change POS to '' if preceding tag is .. score= 3
+m1: Change POS to VBZ if preceding tag is EX. score= 15
+... trying from-tag: CC
+... trying from-tag: ``
+... trying from-tag: WRB
+... trying from-tag: PRP
+... trying from-tag: DT
+... trying from-tag: NN
+... trying from-tag: JJR
+... trying from-tag: RBS
+... trying from-tag: $
+... trying from-tag: PRP$
+... trying from-tag: MD
+... trying from-tag: WP
+... trying from-tag: PDT
+... trying from-tag: NNPS
+... trying from-tag: RBR
+... trying from-tag: FW
+... trying from-tag: TO
+... trying from-tag: EX
+... trying from-tag: ,
+... trying from-tag: SYM
+... trying from-tag: ''
+... trying from-tag: VBP
+... trying from-tag: WP$
+... trying from-tag: UH
+... trying from-tag: VBZ
+... trying from-tag: NNP
+... trying from-tag: NNS
+... trying from-tag: -RRB-
+... trying from-tag: -NONE-
+... trying from-tag: WDT
+... trying from-tag: VBG
+... trying from-tag: VB
+... trying from-tag: IN
+... trying from-tag: RB
+... trying from-tag: #
+... trying from-tag: JJS
+... trying from-tag: JJ
+... trying from-tag: -LRB-
+... trying from-tag: RP
+... trying from-tag: :
+... trying from-tag: LS
+... trying from-tag: .
+... trying from-tag: CD
+... trying from-tag: VBD
+... trying from-tag: VBN
+--> m1: Change POS to VBZ if preceding tag is EX. score= 15
+m1: Change POS to VBZ if preceding tag is EX. score= 15
+==> m1: Change POS to VBZ if preceding tag is EX. score= 15
+m1: Change POS to VBZ if preceding tag is PRP. score= 41
+m1: Change POS to VBZ if preceding tag is EX. score= 15
+====September 08, 2018 04:20:22 PM====
+====September 08, 2018 04:20:28 PM====
+Description:    NLTK Penn-Treebank initially tagged with most frequent tag
+Initial Tagging: 80552 [('Pierre', 'NNP'), ('Vinken', 'NNP'), (',', ','), ('61', 'CD'), ('years', 'NNS'), ('old', 'JJ'), (',', ','), ('will', 'MD'), ('join', 'VB'), ('the', 'DT')]
+True Tagging:    80552 [('Pierre', 'NNP'), ('Vinken', 'NNP'), (',', ','), ('61', 'CD'), ('years', 'NNS'), ('old', 'JJ'), (',', ','), ('will', 'MD'), ('join', 'VB'), ('the', 'DT')]
+Tag Set: 46 {'POS', 'CC', '``', 'WRB', 'PRP', 'DT', 'NN', 'JJR', 'RBS', '$', 'PRP$', 'MD', 'WP', 'PDT', 'NNPS', 'RBR', 'FW', 'TO', 'EX', ',', 'SYM', "''", 'VBP', 'WP$', 'UH', 'VBZ', 'NNP', 'NNS', '-RRB-', '-NONE-', 'WDT', 'VBG', 'VB', 'IN', 'RB', '#', 'JJS', 'JJ', '-LRB-', 'RP', ':', 'LS', '.', 'CD', 'VBD', 'VBN'}
+====September 08, 2018 04:20:28 PM====
+good z: [(('CC', ''), 1), (('DT', ''), 1), (('PRP$', ''), 1), (('NNP', ''), 10), (('IN', ''), 1), (('JJ', ''), 1), (('.', ''), 2)]
+bad z: [(('POS', ''), 271), (('CC', ''), 203), (('``', ''), 51), (('WRB', ''), 8), (('PRP', ''), 3), (('DT', ''), 2915), (('NN', ''), 1297), (('JJR', ''), 69), (('PRP$', ''), 249), (('WP', ''), 3), (('NNPS', ''), 6), (('TO', ''), 50), ((',', ''), 176), (("''", ''), 24), (('VBP', ''), 16), (('WP$', ''), 7), (('VBZ', ''), 58), (('NNP', ''), 424), (('NNS', ''), 107), (('-RRB-', ''), 5), (('-NONE-', ''), 97), (('VBG', ''), 165), (('VB', ''), 139), (('IN', ''), 868), (('RB', ''), 37), (('JJS', ''), 47), (('JJ', ''), 1963), (('-LRB-', ''), 2), (('RP', ''), 8), ((':', ''), 12), (('.', ''), 102), (('CD', ''), 575), (('VBD', ''), 72), (('VBN', ''), 115)]
+====September 08, 2018 04:20:28 PM====
+... trying from-tag: POS
+m1: Change POS to '' if preceding tag is .. score= 4
+m1: Change POS to VBZ if preceding tag is PRP. score= 41
+... trying from-tag: CC
+... trying from-tag: ``
+... trying from-tag: WRB
+... trying from-tag: PRP
+... trying from-tag: DT
+... trying from-tag: NN
+... trying from-tag: JJR
+... trying from-tag: RBS
+... trying from-tag: $
+... trying from-tag: PRP$
+... trying from-tag: MD
+... trying from-tag: WP
+... trying from-tag: PDT
+... trying from-tag: NNPS
+... trying from-tag: RBR
+... trying from-tag: FW
+... trying from-tag: TO
+... trying from-tag: EX
+... trying from-tag: ,
+... trying from-tag: SYM
+... trying from-tag: ''
+... trying from-tag: VBP
+... trying from-tag: WP$
+... trying from-tag: UH
+... trying from-tag: VBZ
+... trying from-tag: NNP
+... trying from-tag: NNS
+... trying from-tag: -RRB-
+... trying from-tag: -NONE-
+... trying from-tag: WDT
+... trying from-tag: VBG
+... trying from-tag: VB
+... trying from-tag: IN
+... trying from-tag: RB
+... trying from-tag: #
+... trying from-tag: JJS
+... trying from-tag: JJ
+... trying from-tag: -LRB-
+... trying from-tag: RP
+... trying from-tag: :
+... trying from-tag: LS
+... trying from-tag: .
+... trying from-tag: CD
+... trying from-tag: VBD
+... trying from-tag: VBN
+--> m1: Change POS to VBZ if preceding tag is PRP. score= 41
+m1: Change POS to VBZ if preceding tag is PRP. score= 41
+... trying from-tag: POS
+m1: Change POS to '' if preceding tag is .. score= 4
+m1: Change POS to VBZ if preceding tag is -NONE-. score= 16
+... trying from-tag: CC
+... trying from-tag: ``
+... trying from-tag: WRB
+... trying from-tag: PRP
+... trying from-tag: DT
+... trying from-tag: NN
+... trying from-tag: JJR
+... trying from-tag: RBS
+... trying from-tag: $
+... trying from-tag: PRP$
+... trying from-tag: MD
+... trying from-tag: WP
+... trying from-tag: PDT
+... trying from-tag: NNPS
+... trying from-tag: RBR
+... trying from-tag: FW
+... trying from-tag: TO
+... trying from-tag: EX
+... trying from-tag: ,
+... trying from-tag: SYM
+... trying from-tag: ''
+... trying from-tag: VBP
+... trying from-tag: WP$
+... trying from-tag: UH
+... trying from-tag: VBZ
+... trying from-tag: NNP
+... trying from-tag: NNS
+... trying from-tag: -RRB-
+... trying from-tag: -NONE-
+... trying from-tag: WDT
+... trying from-tag: VBG
+... trying from-tag: VB
+... trying from-tag: IN
+... trying from-tag: RB
+... trying from-tag: #
+... trying from-tag: JJS
+... trying from-tag: JJ
+... trying from-tag: -LRB-
+... trying from-tag: RP
+... trying from-tag: :
+... trying from-tag: LS
+... trying from-tag: .
+... trying from-tag: CD
+... trying from-tag: VBD
+... trying from-tag: VBN
+--> m1: Change POS to VBZ if preceding tag is -NONE-. score= 16
+m1: Change POS to VBZ if preceding tag is -NONE-. score= 16
+==> m1: Change POS to VBZ if preceding tag is -NONE-. score= 16
+m1: Change POS to VBZ if preceding tag is PRP. score= 41
+m1: Change POS to VBZ if preceding tag is -NONE-. score= 16
+====September 08, 2018 04:23:44 PM====
+====September 08, 2018 04:23:50 PM====
+Description:    NLTK Penn-Treebank initially tagged with most frequent tag
+Initial Tagging: 80559 [('Mr.', 'NNP'), ('Vinken', 'NNP'), ('is', 'VBZ'), ('chairman', 'NN'), ('of', 'IN'), ('Elsevier', 'NNP'), ('N.V.', 'NNP'), (',', ','), ('the', 'DT'), ('Dutch', 'JJ')]
+True Tagging:    80559 [('Mr.', 'NNP'), ('Vinken', 'NNP'), ('is', 'VBZ'), ('chairman', 'NN'), ('of', 'IN'), ('Elsevier', 'NNP'), ('N.V.', 'NNP'), (',', ','), ('the', 'DT'), ('Dutch', 'NNP')]
+Tag Set: 46 {'POS', 'CC', '``', 'WRB', 'PRP', 'DT', 'NN', 'JJR', 'RBS', '$', 'PRP$', 'MD', 'WP', 'PDT', 'NNPS', 'RBR', 'FW', 'TO', 'EX', ',', 'SYM', "''", 'VBP', 'WP$', 'UH', 'VBZ', 'NNP', 'NNS', '-RRB-', '-NONE-', 'WDT', 'VBG', 'VB', 'IN', 'RB', '#', 'JJS', 'JJ', '-LRB-', 'RP', ':', 'LS', '.', 'CD', 'VBD', 'VBN'}
+====September 08, 2018 04:23:50 PM====
+good z: [(('CC', ''), 1), (('DT', ''), 1), (('PRP$', ''), 1), (('NNP', ''), 8), (('IN', ''), 1), (('JJ', ''), 1), (('.', ''), 2)]
+bad z: [(('POS', ''), 271), (('CC', ''), 203), (('``', ''), 57), (('WRB', ''), 6), (('PRP', ''), 3), (('DT', ''), 2939), (('NN', ''), 1323), (('JJR', ''), 65), (('PRP$', ''), 264), (('WP', ''), 2), (('NNPS', ''), 7), (('TO', ''), 54), ((',', ''), 192), (("''", ''), 32), (('VBP', ''), 17), (('WP$', ''), 7), (('VBZ', ''), 53), (('NNP', ''), 417), (('NNS', ''), 120), (('-RRB-', ''), 4), (('-NONE-', ''), 93), (('WDT', ''), 1), (('VBG', ''), 165), (('VB', ''), 142), (('IN', ''), 896), (('RB', ''), 44), (('JJS', ''), 43), (('JJ', ''), 1920), (('-LRB-', ''), 1), (('RP', ''), 9), ((':', ''), 11), (('.', ''), 92), (('CD', ''), 545), (('VBD', ''), 69), (('VBN', ''), 118)]
+====September 08, 2018 04:23:50 PM====
+... trying from-tag: POS
+m1: Change POS to '' if preceding tag is .. score= 4
+m1: Change POS to VBZ if preceding tag is PRP. score= 38
+... trying from-tag: CC
+... trying from-tag: ``
+... trying from-tag: WRB
+... trying from-tag: PRP
+... trying from-tag: DT
+... trying from-tag: NN
+... trying from-tag: JJR
+... trying from-tag: RBS
+... trying from-tag: $
+... trying from-tag: PRP$
+... trying from-tag: MD
+... trying from-tag: WP
+... trying from-tag: PDT
+... trying from-tag: NNPS
+... trying from-tag: RBR
+... trying from-tag: FW
+... trying from-tag: TO
+... trying from-tag: EX
+... trying from-tag: ,
+... trying from-tag: SYM
+... trying from-tag: ''
+... trying from-tag: VBP
+... trying from-tag: WP$
+... trying from-tag: UH
+... trying from-tag: VBZ
+... trying from-tag: NNP
+... trying from-tag: NNS
+... trying from-tag: -RRB-
+... trying from-tag: -NONE-
+... trying from-tag: WDT
+... trying from-tag: VBG
+... trying from-tag: VB
+... trying from-tag: IN
+... trying from-tag: RB
+... trying from-tag: #
+... trying from-tag: JJS
+... trying from-tag: JJ
+... trying from-tag: -LRB-
+... trying from-tag: RP
+... trying from-tag: :
+... trying from-tag: LS
+... trying from-tag: .
+... trying from-tag: CD
+... trying from-tag: VBD
+... trying from-tag: VBN
+--> m1: Change POS to VBZ if preceding tag is PRP. score= 38
+m1: Change POS to VBZ if preceding tag is PRP. score= 38
+... trying from-tag: POS
+m1: Change POS to '' if preceding tag is .. score= 4
+m1: Change POS to VBZ if preceding tag is EX. score= 14
+... trying from-tag: CC
+... trying from-tag: ``
+... trying from-tag: WRB
+... trying from-tag: PRP
+... trying from-tag: DT
+... trying from-tag: NN
+... trying from-tag: JJR
+... trying from-tag: RBS
+... trying from-tag: $
+... trying from-tag: PRP$
+... trying from-tag: MD
+... trying from-tag: WP
+... trying from-tag: PDT
+... trying from-tag: NNPS
+... trying from-tag: RBR
+... trying from-tag: FW
+... trying from-tag: TO
+... trying from-tag: EX
+... trying from-tag: ,
+... trying from-tag: SYM
+... trying from-tag: ''
+... trying from-tag: VBP
+... trying from-tag: WP$
+... trying from-tag: UH
+... trying from-tag: VBZ
+... trying from-tag: NNP
+... trying from-tag: NNS
+... trying from-tag: -RRB-
+... trying from-tag: -NONE-
+... trying from-tag: WDT
+... trying from-tag: VBG
+... trying from-tag: VB
+... trying from-tag: IN
+... trying from-tag: RB
+... trying from-tag: #
+... trying from-tag: JJS
+... trying from-tag: JJ
+... trying from-tag: -LRB-
+... trying from-tag: RP
+... trying from-tag: :
+... trying from-tag: LS
+... trying from-tag: .
+... trying from-tag: CD
+... trying from-tag: VBD
+... trying from-tag: VBN
+--> m1: Change POS to VBZ if preceding tag is EX. score= 14
+m1: Change POS to VBZ if preceding tag is EX. score= 14
+==> m1: Change POS to VBZ if preceding tag is EX. score= 14
+m1: Change POS to VBZ if preceding tag is PRP. score= 38
+m1: Change POS to VBZ if preceding tag is EX. score= 14
+====September 08, 2018 04:27:08 PM====
+====September 08, 2018 04:27:13 PM====
+Description:    NLTK Penn-Treebank initially tagged with most frequent tag
+Initial Tagging: 79558 [('Pierre', 'NNP'), ('Vinken', 'NNP'), (',', ','), ('61', 'CD'), ('years', 'NNS'), ('old', 'JJ'), (',', ','), ('will', 'MD'), ('join', 'VB'), ('the', 'DT')]
+True Tagging:    79558 [('Pierre', 'NNP'), ('Vinken', 'NNP'), (',', ','), ('61', 'CD'), ('years', 'NNS'), ('old', 'JJ'), (',', ','), ('will', 'MD'), ('join', 'VB'), ('the', 'DT')]
+Tag Set: 46 {'POS', 'CC', '``', 'WRB', 'PRP', 'DT', 'NN', 'JJR', 'RBS', '$', 'PRP$', 'MD', 'WP', 'PDT', 'NNPS', 'RBR', 'FW', 'TO', 'EX', ',', 'SYM', "''", 'VBP', 'WP$', 'UH', 'VBZ', 'NNP', 'NNS', '-RRB-', '-NONE-', 'WDT', 'VBG', 'VB', 'IN', 'RB', '#', 'JJS', 'JJ', '-LRB-', 'RP', ':', 'LS', '.', 'CD', 'VBD', 'VBN'}
+====September 08, 2018 04:27:13 PM====
+good z: [(('CC', ''), 1), (('DT', ''), 1), (('PRP$', ''), 1), (('NNP', ''), 9), (('IN', ''), 1), (('JJ', ''), 1), (('.', ''), 2)]
+bad z: [(('POS', ''), 274), (('CC', ''), 210), (('``', ''), 54), (('WRB', ''), 9), (('PRP', ''), 2), (('DT', ''), 2874), (('NN', ''), 1304), (('JJR', ''), 60), (('PRP$', ''), 251), (('WP', ''), 4), (('NNPS', ''), 6), (('TO', ''), 51), ((',', ''), 190), (("''", ''), 26), (('VBP', ''), 18), (('WP$', ''), 8), (('VBZ', ''), 65), (('NNP', ''), 417), (('NNS', ''), 113), (('-RRB-', ''), 4), (('-NONE-', ''), 86), (('WDT', ''), 2), (('VBG', ''), 150), (('VB', ''), 135), (('IN', ''), 853), (('RB', ''), 41), (('JJS', ''), 41), (('JJ', ''), 1923), (('-LRB-', ''), 1), (('RP', ''), 10), ((':', ''), 12), (('.', ''), 87), (('CD', ''), 524), (('VBD', ''), 71), (('VBN', ''), 112)]
+====September 08, 2018 04:27:13 PM====
+... trying from-tag: POS
+m1: Change POS to '' if preceding tag is ,. score= 2
+m1: Change POS to VBZ if preceding tag is PRP. score= 41
+... trying from-tag: CC
+... trying from-tag: ``
+... trying from-tag: WRB
+... trying from-tag: PRP
+... trying from-tag: DT
+... trying from-tag: NN
+... trying from-tag: JJR
+... trying from-tag: RBS
+... trying from-tag: $
+... trying from-tag: PRP$
+... trying from-tag: MD
+... trying from-tag: WP
+... trying from-tag: PDT
+... trying from-tag: NNPS
+... trying from-tag: RBR
+... trying from-tag: FW
+... trying from-tag: TO
+... trying from-tag: EX
+... trying from-tag: ,
+... trying from-tag: SYM
+... trying from-tag: ''
+... trying from-tag: VBP
+... trying from-tag: WP$
+... trying from-tag: UH
+... trying from-tag: VBZ
+... trying from-tag: NNP
+... trying from-tag: NNS
+... trying from-tag: -RRB-
+... trying from-tag: -NONE-
+... trying from-tag: WDT
+... trying from-tag: VBG
+... trying from-tag: VB
+... trying from-tag: IN
+... trying from-tag: RB
+... trying from-tag: #
+... trying from-tag: JJS
+... trying from-tag: JJ
+... trying from-tag: -LRB-
+... trying from-tag: RP
+... trying from-tag: :
+... trying from-tag: LS
+... trying from-tag: .
+... trying from-tag: CD
+... trying from-tag: VBD
+... trying from-tag: VBN
+--> m1: Change POS to VBZ if preceding tag is PRP. score= 41
+m1: Change POS to VBZ if preceding tag is PRP. score= 41
+... trying from-tag: POS
+m1: Change POS to '' if preceding tag is ,. score= 2
+m1: Change POS to VBZ if preceding tag is -NONE-. score= 18
+... trying from-tag: CC
+... trying from-tag: ``
+... trying from-tag: WRB
+... trying from-tag: PRP
+... trying from-tag: DT
+... trying from-tag: NN
+... trying from-tag: JJR
+... trying from-tag: RBS
+... trying from-tag: $
+... trying from-tag: PRP$
+... trying from-tag: MD
+... trying from-tag: WP
+... trying from-tag: PDT
+... trying from-tag: NNPS
+... trying from-tag: RBR
+... trying from-tag: FW
+... trying from-tag: TO
+... trying from-tag: EX
+... trying from-tag: ,
+... trying from-tag: SYM
+... trying from-tag: ''
+... trying from-tag: VBP
+... trying from-tag: WP$
+... trying from-tag: UH
+... trying from-tag: VBZ
+... trying from-tag: NNP
+... trying from-tag: NNS
+... trying from-tag: -RRB-
+... trying from-tag: -NONE-
+... trying from-tag: WDT
+... trying from-tag: VBG
+... trying from-tag: VB
+... trying from-tag: IN
+... trying from-tag: RB
+... trying from-tag: #
+... trying from-tag: JJS
+... trying from-tag: JJ
+... trying from-tag: -LRB-
+... trying from-tag: RP
+... trying from-tag: :
+... trying from-tag: LS
+... trying from-tag: .
+... trying from-tag: CD
+... trying from-tag: VBD
+... trying from-tag: VBN
+--> m1: Change POS to VBZ if preceding tag is -NONE-. score= 18
+m1: Change POS to VBZ if preceding tag is -NONE-. score= 18
+==> m1: Change POS to VBZ if preceding tag is -NONE-. score= 18
+m1: Change POS to VBZ if preceding tag is PRP. score= 41
+m1: Change POS to VBZ if preceding tag is -NONE-. score= 18
+====September 08, 2018 04:30:35 PM====

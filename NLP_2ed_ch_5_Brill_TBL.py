@@ -80,14 +80,16 @@ class BrillTBL:
         minimum_change = 10
         last_score = 0
         while True:
-            best_transform = get_best_transform()
-            apply_transform(best_transform, tagged_sents)
+            best_transform = self.get_best_transform()
+            self.apply_transform(best_transform)
             self.transforms_queue += [ best_transform ]
-            printTransform(best_transform)
+            self.printTransform(best_transform)
             change_in_score = best_transform[1] - last_score
             if change_in_score < minimum_change:
                 break
             last_score = best_transform[1]
+        print("==> ", end='')
+        self.printTransform(best_transform)
         return self.transforms_queue
 
     # Get the transform that most improves the current tagging.
@@ -99,9 +101,11 @@ class BrillTBL:
         """
         best_transform = ( NIL_TEMPLATE, 0, )
         for template in self.templates:
-            instance, score = get_best_instance(template)
+            instance, score = self.get_best_instance(template)
             if (score > best_transform[1]):
                 best_transform = ( instance, score, )
+        print("--> ", end='')
+        self.printTransform(best_transform)
         return best_transform
 
     # Test transform at every position across the corpus
@@ -148,7 +152,6 @@ class BrillTBL:
         # iterate over all tag pairs ...
         for fromTag in self.tagset:
             print("... trying from-tag:", fromTag)
-            self.printTransform(best_transform)
             for toTag in self.tagset:
                 # test the default transform, context just preceding tag
                 self.test_transform_m1(fromTag, toTag,
@@ -182,11 +185,11 @@ class BrillTBL:
         type, fromTag, toTag, zTag, wTag, desc = transform[0]
         previous_tag = START_TAG
         for pos in range(len(self.tagged_words)):
-            current_tag = self.tagged_words[pos][1]
+            word, current_tag = self.tagged_words[pos]
             if pos > 0:
                 previous_tag = self.tagged_words[pos-1][1]
-            if current_tag == tagFrom and previous_tag == zTag:
-                self.tagged_words[pos][1] = toTag
+            if current_tag == fromTag and previous_tag == zTag:
+                self.tagged_words[pos] = ( word, toTag, )
 
 # ------------------------------------------------------------------------
 # Tests ---
@@ -276,11 +279,11 @@ if __name__ == '__main__':
         nowStr = datetime.now().strftime("%B %d, %Y %I:%M:%S %p")
         print("====" + nowStr + "====")
 
-        # Test get_best_instance()
-        best_transform_DEFAULT = tagger.get_best_instance(DEFAULT_TEMPLATE)
-        typeT, fT, tT, zT, wT, desc = best_transform_DEFAULT[0]
-        best_score_DEFAULT = best_transform_DEFAULT[1]
-        tagger.printTransform(best_transform_DEFAULT)
+        # Test learn()
+        transform_sequence = tagger.learn()
+        print("---- TRANSFORM SEQUENCE ----")
+        for rule in transform_sequence:
+            tagger.printTransform(rule)
         nowStr = datetime.now().strftime("%B %d, %Y %I:%M:%S %p")
         print("====" + nowStr + "====")
 
