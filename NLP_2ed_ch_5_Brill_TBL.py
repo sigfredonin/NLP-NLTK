@@ -246,7 +246,7 @@ if __name__ == '__main__':
                           tb_training_tagged_words,
                           tb_tagset,
                           "NLTK Penn-Treebank initially tagged with most frequent tag")
-        print("Desccription:   ", tagger.name)
+        print("Description:   ", tagger.name)
         print("Initial Tagging:", len(tagger.tagged_words),
               tagger.tagged_words[:10])
         print("True Tagging:   ", len(tagger.tagged_words_true),

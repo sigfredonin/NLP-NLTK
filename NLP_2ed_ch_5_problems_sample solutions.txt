@@ -526,3 +526,525 @@ m1: Change VBP to VB if preceding tag is MD. score= 17
 m1: Change VBP to VB if preceding tag is MD. score= 17
 m1: Change VBP to VB if preceding tag is MD. score= 17
 ====September 07, 2018 07:53:04 PM====
+
+======== RESTART: D:\Documents\NLP\NLP-NLTK\NLP_2ed_ch_5_Brill_TBL.py ========
+====September 07, 2018 09:50:51 PM====
+====September 07, 2018 09:51:18 PM====
+Desccription:    NLTK Penn-Treebank initially tagged with most frequent tag
+Initial Tagging: 79680 [('Pierre', 'NNP'), ('Vinken', 'NNP'), (',', ','), ('61', 'CD'), ('years', 'NNS'), ('old', 'JJ'), (',', ','), ('will', 'MD'), ('join', 'VB'), ('the', 'DT')]
+True Tagging:    79680 [('Pierre', 'NNP'), ('Vinken', 'NNP'), (',', ','), ('61', 'CD'), ('years', 'NNS'), ('old', 'JJ'), (',', ','), ('will', 'MD'), ('join', 'VB'), ('the', 'DT')]
+Tag Set: 46 {'NNS', 'CC', '``', 'RP', 'PRP$', 'VBZ', 'IN', 'RBR', 'WP$', 'PDT', 'NNPS', 'RB', 'NN', 'NNP', '-NONE-', '$', 'JJ', 'LS', 'FW', 'WRB', 'UH', 'PRP', 'VBD', 'VBG', 'POS', 'RBS', 'WDT', '-RRB-', ':', 'SYM', 'CD', ',', 'MD', 'JJR', 'VBP', 'TO', 'VB', '-LRB-', '.', 'EX', 'DT', 'VBN', 'WP', "''", '#', 'JJS'}
+====September 07, 2018 09:51:18 PM====
+good z: [(('CC', ''), 1), (('IN', ''), 1), (('NNP', ''), 11), (('JJ', ''), 1), (('.', ''), 3), (('DT', ''), 1)]
+bad z: [(('NNS', ''), 121), (('CC', ''), 216), (('``', ''), 59), (('RP', ''), 10), (('PRP$', ''), 252), (('VBZ', ''), 58), (('IN', ''), 866), (('WP$', ''), 6), (('NNPS', ''), 3), (('RB', ''), 41), (('NN', ''), 1331), (('NNP', ''), 424), (('-NONE-', ''), 89), (('JJ', ''), 1949), (('WRB', ''), 10), (('PRP', ''), 2), (('VBD', ''), 64), (('VBG', ''), 169), (('POS', ''), 269), (('WDT', ''), 2), (('-RRB-', ''), 5), ((':', ''), 13), (('CD', ''), 538), ((',', ''), 187), (('JJR', ''), 63), (('VBP', ''), 21), (('TO', ''), 56), (('VB', ''), 141), (('-LRB-', ''), 2), (('.', ''), 98), (('DT', ''), 2882), (('VBN', ''), 118), (('WP', ''), 3), (("''", ''), 26), (('JJS', ''), 39)]
+====September 07, 2018 09:51:18 PM====
+... trying from-tag: NNS
+NIL: Don't change the tag. score= 0
+m1: Change NNS to VBZ if preceding tag is PRP. score= 1
+... trying from-tag: CC
+m1: Change NNS to VBZ if preceding tag is PRP. score= 1
+... trying from-tag: ``
+m1: Change NNS to VBZ if preceding tag is PRP. score= 1
+... trying from-tag: RP
+m1: Change NNS to VBZ if preceding tag is PRP. score= 1
+... trying from-tag: PRP$
+m1: Change NNS to VBZ if preceding tag is PRP. score= 1
+... trying from-tag: VBZ
+m1: Change NNS to VBZ if preceding tag is PRP. score= 1
+... trying from-tag: IN
+m1: Change NNS to VBZ if preceding tag is PRP. score= 1
+... trying from-tag: RBR
+m1: Change NNS to VBZ if preceding tag is PRP. score= 1
+... trying from-tag: WP$
+m1: Change NNS to VBZ if preceding tag is PRP. score= 1
+... trying from-tag: PDT
+m1: Change NNS to VBZ if preceding tag is PRP. score= 1
+... trying from-tag: NNPS
+m1: Change NNS to VBZ if preceding tag is PRP. score= 1
+... trying from-tag: RB
+m1: Change NNS to VBZ if preceding tag is PRP. score= 1
+... trying from-tag: NN
+m1: Change NNS to VBZ if preceding tag is PRP. score= 1
+... trying from-tag: NNP
+m1: Change NNS to VBZ if preceding tag is PRP. score= 1
+... trying from-tag: -NONE-
+m1: Change NNS to VBZ if preceding tag is PRP. score= 1
+... trying from-tag: $
+m1: Change NNS to VBZ if preceding tag is PRP. score= 1
+... trying from-tag: JJ
+m1: Change NNS to VBZ if preceding tag is PRP. score= 1
+... trying from-tag: LS
+m1: Change NNS to VBZ if preceding tag is PRP. score= 1
+... trying from-tag: FW
+m1: Change NNS to VBZ if preceding tag is PRP. score= 1
+... trying from-tag: WRB
+m1: Change NNS to VBZ if preceding tag is PRP. score= 1
+... trying from-tag: UH
+m1: Change NNS to VBZ if preceding tag is PRP. score= 1
+... trying from-tag: PRP
+m1: Change NNS to VBZ if preceding tag is PRP. score= 1
+... trying from-tag: VBD
+m1: Change NNS to VBZ if preceding tag is PRP. score= 1
+... trying from-tag: VBG
+m1: Change NNS to VBZ if preceding tag is PRP. score= 1
+... trying from-tag: POS
+m1: Change NNS to VBZ if preceding tag is PRP. score= 1
+... trying from-tag: RBS
+m1: Change NNS to VBZ if preceding tag is PRP. score= 1
+... trying from-tag: WDT
+m1: Change NNS to VBZ if preceding tag is PRP. score= 1
+... trying from-tag: -RRB-
+m1: Change NNS to VBZ if preceding tag is PRP. score= 1
+... trying from-tag: :
+m1: Change NNS to VBZ if preceding tag is PRP. score= 1
+... trying from-tag: SYM
+m1: Change NNS to VBZ if preceding tag is PRP. score= 1
+... trying from-tag: CD
+m1: Change NNS to VBZ if preceding tag is PRP. score= 1
+... trying from-tag: ,
+m1: Change NNS to VBZ if preceding tag is PRP. score= 1
+... trying from-tag: MD
+m1: Change NNS to VBZ if preceding tag is PRP. score= 1
+... trying from-tag: JJR
+m1: Change NNS to VBZ if preceding tag is PRP. score= 1
+... trying from-tag: VBP
+m1: Change NNS to VBZ if preceding tag is PRP. score= 1
+... trying from-tag: TO
+m1: Change NNS to VBZ if preceding tag is PRP. score= 1
+... trying from-tag: VB
+m1: Change NNS to VBZ if preceding tag is PRP. score= 1
+... trying from-tag: -LRB-
+m1: Change NNS to VBZ if preceding tag is PRP. score= 1
+... trying from-tag: .
+m1: Change NNS to VBZ if preceding tag is PRP. score= 1
+... trying from-tag: EX
+m1: Change NNS to VBZ if preceding tag is PRP. score= 1
+... trying from-tag: DT
+m1: Change NNS to VBZ if preceding tag is PRP. score= 1
+... trying from-tag: VBN
+m1: Change NNS to VBZ if preceding tag is PRP. score= 1
+... trying from-tag: WP
+m1: Change NNS to VBZ if preceding tag is PRP. score= 1
+... trying from-tag: ''
+m1: Change NNS to VBZ if preceding tag is PRP. score= 1
+... trying from-tag: #
+m1: Change NNS to VBZ if preceding tag is PRP. score= 1
+... trying from-tag: JJS
+m1: Change NNS to VBZ if preceding tag is PRP. score= 1
+m1: Change NNS to VBZ if preceding tag is PRP. score= 1
+====September 07, 2018 09:55:56 PM====
+====September 07, 2018 09:56:22 PM====
+Desccription:    NLTK Penn-Treebank initially tagged with most frequent tag
+Initial Tagging: 80816 [('Pierre', 'NNP'), ('Vinken', 'NNP'), (',', ','), ('61', 'CD'), ('years', 'NNS'), ('old', 'JJ'), (',', ','), ('will', 'MD'), ('join', 'VB'), ('the', 'DT')]
+True Tagging:    80816 [('Pierre', 'NNP'), ('Vinken', 'NNP'), (',', ','), ('61', 'CD'), ('years', 'NNS'), ('old', 'JJ'), (',', ','), ('will', 'MD'), ('join', 'VB'), ('the', 'DT')]
+Tag Set: 46 {'NNS', 'CC', '``', 'RP', 'PRP$', 'VBZ', 'IN', 'RBR', 'WP$', 'PDT', 'NNPS', 'RB', 'NN', 'NNP', '-NONE-', '$', 'JJ', 'LS', 'FW', 'WRB', 'UH', 'PRP', 'VBD', 'VBG', 'POS', 'RBS', 'WDT', '-RRB-', ':', 'SYM', 'CD', ',', 'MD', 'JJR', 'VBP', 'TO', 'VB', '-LRB-', '.', 'EX', 'DT', 'VBN', 'WP', "''", '#', 'JJS'}
+====September 07, 2018 09:56:23 PM====
+good z: [(('CC', ''), 1), (('PRP$', ''), 1), (('IN', ''), 1), (('NNP', ''), 10), (('.', ''), 3), (('DT', ''), 1)]
+bad z: [(('NNS', ''), 108), (('CC', ''), 209), (('``', ''), 55), (('RP', ''), 11), (('PRP$', ''), 262), (('VBZ', ''), 59), (('IN', ''), 873), (('WP$', ''), 6), (('NNPS', ''), 5), (('RB', ''), 41), (('NN', ''), 1365), (('NNP', ''), 424), (('-NONE-', ''), 97), (('JJ', ''), 1972), (('WRB', ''), 8), (('PRP', ''), 3), (('VBD', ''), 77), (('VBG', ''), 155), (('POS', ''), 269), (('WDT', ''), 1), (('-RRB-', ''), 5), ((':', ''), 10), (('CD', ''), 539), ((',', ''), 184), (('JJR', ''), 58), (('VBP', ''), 18), (('TO', ''), 48), (('VB', ''), 142), (('-LRB-', ''), 1), (('.', ''), 103), (('DT', ''), 2927), (('VBN', ''), 114), (('WP', ''), 3), (("''", ''), 27), (('JJS', ''), 36)]
+====September 07, 2018 09:56:23 PM====
+... trying from-tag: NNS
+NIL: Don't change the tag. score= 0
+m1: Change NNS to VBZ if preceding tag is PRP. score= 2
+... trying from-tag: CC
+m1: Change NNS to VBZ if preceding tag is PRP. score= 2
+... trying from-tag: ``
+m1: Change NNS to VBZ if preceding tag is PRP. score= 2
+... trying from-tag: RP
+m1: Change NNS to VBZ if preceding tag is PRP. score= 2
+... trying from-tag: PRP$
+m1: Change NNS to VBZ if preceding tag is PRP. score= 2
+... trying from-tag: VBZ
+m1: Change NNS to VBZ if preceding tag is PRP. score= 2
+... trying from-tag: IN
+m1: Change NNS to VBZ if preceding tag is PRP. score= 2
+... trying from-tag: RBR
+m1: Change NNS to VBZ if preceding tag is PRP. score= 2
+... trying from-tag: WP$
+m1: Change NNS to VBZ if preceding tag is PRP. score= 2
+... trying from-tag: PDT
+m1: Change NNS to VBZ if preceding tag is PRP. score= 2
+... trying from-tag: NNPS
+m1: Change NNS to VBZ if preceding tag is PRP. score= 2
+... trying from-tag: RB
+m1: Change NNS to VBZ if preceding tag is PRP. score= 2
+... trying from-tag: NN
+m1: Change NNS to VBZ if preceding tag is PRP. score= 2
+... trying from-tag: NNP
+m1: Change NNS to VBZ if preceding tag is PRP. score= 2
+... trying from-tag: -NONE-
+m1: Change NNS to VBZ if preceding tag is PRP. score= 2
+... trying from-tag: $
+m1: Change NNS to VBZ if preceding tag is PRP. score= 2
+... trying from-tag: JJ
+m1: Change NNS to VBZ if preceding tag is PRP. score= 2
+... trying from-tag: LS
+m1: Change NNS to VBZ if preceding tag is PRP. score= 2
+... trying from-tag: FW
+m1: Change NNS to VBZ if preceding tag is PRP. score= 2
+... trying from-tag: WRB
+m1: Change NNS to VBZ if preceding tag is PRP. score= 2
+... trying from-tag: UH
+m1: Change NNS to VBZ if preceding tag is PRP. score= 2
+... trying from-tag: PRP
+m1: Change NNS to VBZ if preceding tag is PRP. score= 2
+... trying from-tag: VBD
+m1: Change NNS to VBZ if preceding tag is PRP. score= 2
+... trying from-tag: VBG
+m1: Change NNS to VBZ if preceding tag is PRP. score= 2
+... trying from-tag: POS
+m1: Change NNS to VBZ if preceding tag is PRP. score= 2
+... trying from-tag: RBS
+m1: Change NNS to VBZ if preceding tag is PRP. score= 2
+... trying from-tag: WDT
+m1: Change NNS to VBZ if preceding tag is PRP. score= 2
+... trying from-tag: -RRB-
+m1: Change NNS to VBZ if preceding tag is PRP. score= 2
+... trying from-tag: :
+m1: Change NNS to VBZ if preceding tag is PRP. score= 2
+... trying from-tag: SYM
+m1: Change NNS to VBZ if preceding tag is PRP. score= 2
+... trying from-tag: CD
+m1: Change NNS to VBZ if preceding tag is PRP. score= 2
+... trying from-tag: ,
+m1: Change NNS to VBZ if preceding tag is PRP. score= 2
+... trying from-tag: MD
+m1: Change NNS to VBZ if preceding tag is PRP. score= 2
+... trying from-tag: JJR
+m1: Change NNS to VBZ if preceding tag is PRP. score= 2
+... trying from-tag: VBP
+m1: Change NNS to VBZ if preceding tag is PRP. score= 2
+... trying from-tag: TO
+m1: Change NNS to VBZ if preceding tag is PRP. score= 2
+... trying from-tag: VB
+m1: Change NNS to VBZ if preceding tag is PRP. score= 2
+... trying from-tag: -LRB-
+m1: Change NNS to VBZ if preceding tag is PRP. score= 2
+... trying from-tag: .
+m1: Change NNS to VBZ if preceding tag is PRP. score= 2
+... trying from-tag: EX
+m1: Change NNS to VBZ if preceding tag is PRP. score= 2
+... trying from-tag: DT
+m1: Change NNS to VBZ if preceding tag is PRP. score= 2
+... trying from-tag: VBN
+m1: Change NNS to VBZ if preceding tag is PRP. score= 2
+... trying from-tag: WP
+m1: Change NNS to VBZ if preceding tag is PRP. score= 2
+... trying from-tag: ''
+m1: Change NNS to VBZ if preceding tag is PRP. score= 2
+... trying from-tag: #
+m1: Change NNS to VBZ if preceding tag is PRP. score= 2
+... trying from-tag: JJS
+m1: Change NNS to VBZ if preceding tag is PRP. score= 2
+m1: Change NNS to VBZ if preceding tag is PRP. score= 2
+====September 07, 2018 10:01:07 PM====
+====September 07, 2018 10:01:33 PM====
+Desccription:    NLTK Penn-Treebank initially tagged with most frequent tag
+Initial Tagging: 79884 [('Pierre', 'NNP'), ('Vinken', 'NNP'), (',', ','), ('61', 'CD'), ('years', 'NNS'), ('old', 'JJ'), (',', ','), ('will', 'MD'), ('join', 'VB'), ('the', 'DT')]
+True Tagging:    79884 [('Pierre', 'NNP'), ('Vinken', 'NNP'), (',', ','), ('61', 'CD'), ('years', 'NNS'), ('old', 'JJ'), (',', ','), ('will', 'MD'), ('join', 'VB'), ('the', 'DT')]
+Tag Set: 46 {'NNS', 'CC', '``', 'RP', 'PRP$', 'VBZ', 'IN', 'RBR', 'WP$', 'PDT', 'NNPS', 'RB', 'NN', 'NNP', '-NONE-', '$', 'JJ', 'LS', 'FW', 'WRB', 'UH', 'PRP', 'VBD', 'VBG', 'POS', 'RBS', 'WDT', '-RRB-', ':', 'SYM', 'CD', ',', 'MD', 'JJR', 'VBP', 'TO', 'VB', '-LRB-', '.', 'EX', 'DT', 'VBN', 'WP', "''", '#', 'JJS'}
+====September 07, 2018 10:01:33 PM====
+good z: [(('PRP$', ''), 1), (('NNP', ''), 11), (('.', ''), 3), (('DT', ''), 1)]
+bad z: [(('NNS', ''), 115), (('CC', ''), 228), (('``', ''), 48), (('RP', ''), 9), (('PRP$', ''), 261), (('VBZ', ''), 57), (('IN', ''), 860), (('WP$', ''), 7), (('NNPS', ''), 7), (('RB', ''), 46), (('NN', ''), 1311), (('NNP', ''), 424), (('-NONE-', ''), 87), (('JJ', ''), 1950), (('WRB', ''), 9), (('PRP', ''), 2), (('VBD', ''), 68), (('VBG', ''), 154), (('POS', ''), 263), (('WDT', ''), 2), (('-RRB-', ''), 4), ((':', ''), 11), (('CD', ''), 544), ((',', ''), 195), (('JJR', ''), 55), (('VBP', ''), 21), (('TO', ''), 50), (('VB', ''), 133), (('-LRB-', ''), 2), (('.', ''), 98), (('DT', ''), 2890), (('VBN', ''), 118), (('WP', ''), 3), (("''", ''), 23), (('JJS', ''), 35)]
+====September 07, 2018 10:01:34 PM====
+... trying from-tag: NNS
+NIL: Don't change the tag. score= 0
+m1: Change NNS to VBZ if preceding tag is PRP. score= 2
+... trying from-tag: CC
+m1: Change NNS to VBZ if preceding tag is PRP. score= 2
+... trying from-tag: ``
+m1: Change NNS to VBZ if preceding tag is PRP. score= 2
+... trying from-tag: RP
+m1: Change NNS to VBZ if preceding tag is PRP. score= 2
+... trying from-tag: PRP$
+m1: Change NNS to VBZ if preceding tag is PRP. score= 2
+... trying from-tag: VBZ
+m1: Change NNS to VBZ if preceding tag is PRP. score= 2
+... trying from-tag: IN
+m1: Change NNS to VBZ if preceding tag is PRP. score= 2
+... trying from-tag: RBR
+m1: Change NNS to VBZ if preceding tag is PRP. score= 2
+... trying from-tag: WP$
+m1: Change NNS to VBZ if preceding tag is PRP. score= 2
+... trying from-tag: PDT
+m1: Change NNS to VBZ if preceding tag is PRP. score= 2
+... trying from-tag: NNPS
+m1: Change NNS to VBZ if preceding tag is PRP. score= 2
+... trying from-tag: RB
+m1: Change NNS to VBZ if preceding tag is PRP. score= 2
+... trying from-tag: NN
+m1: Change NNS to VBZ if preceding tag is PRP. score= 2
+... trying from-tag: NNP
+m1: Change NNS to VBZ if preceding tag is PRP. score= 2
+... trying from-tag: -NONE-
+m1: Change NNS to VBZ if preceding tag is PRP. score= 2
+... trying from-tag: $
+m1: Change NNS to VBZ if preceding tag is PRP. score= 2
+... trying from-tag: JJ
+m1: Change NNS to VBZ if preceding tag is PRP. score= 2
+... trying from-tag: LS
+m1: Change NNS to VBZ if preceding tag is PRP. score= 2
+... trying from-tag: FW
+m1: Change NNS to VBZ if preceding tag is PRP. score= 2
+... trying from-tag: WRB
+m1: Change NNS to VBZ if preceding tag is PRP. score= 2
+... trying from-tag: UH
+m1: Change NNS to VBZ if preceding tag is PRP. score= 2
+... trying from-tag: PRP
+m1: Change NNS to VBZ if preceding tag is PRP. score= 2
+... trying from-tag: VBD
+m1: Change NNS to VBZ if preceding tag is PRP. score= 2
+... trying from-tag: VBG
+m1: Change NNS to VBZ if preceding tag is PRP. score= 2
+... trying from-tag: POS
+m1: Change NNS to VBZ if preceding tag is PRP. score= 2
+... trying from-tag: RBS
+m1: Change NNS to VBZ if preceding tag is PRP. score= 2
+... trying from-tag: WDT
+m1: Change NNS to VBZ if preceding tag is PRP. score= 2
+... trying from-tag: -RRB-
+m1: Change NNS to VBZ if preceding tag is PRP. score= 2
+... trying from-tag: :
+m1: Change NNS to VBZ if preceding tag is PRP. score= 2
+... trying from-tag: SYM
+m1: Change NNS to VBZ if preceding tag is PRP. score= 2
+... trying from-tag: CD
+m1: Change NNS to VBZ if preceding tag is PRP. score= 2
+... trying from-tag: ,
+m1: Change NNS to VBZ if preceding tag is PRP. score= 2
+... trying from-tag: MD
+m1: Change NNS to VBZ if preceding tag is PRP. score= 2
+... trying from-tag: JJR
+m1: Change NNS to VBZ if preceding tag is PRP. score= 2
+... trying from-tag: VBP
+m1: Change NNS to VBZ if preceding tag is PRP. score= 2
+... trying from-tag: TO
+m1: Change NNS to VBZ if preceding tag is PRP. score= 2
+... trying from-tag: VB
+m1: Change NNS to VBZ if preceding tag is PRP. score= 2
+... trying from-tag: -LRB-
+m1: Change NNS to VBZ if preceding tag is PRP. score= 2
+... trying from-tag: .
+m1: Change NNS to VBZ if preceding tag is PRP. score= 2
+... trying from-tag: EX
+m1: Change NNS to VBZ if preceding tag is PRP. score= 2
+... trying from-tag: DT
+m1: Change NNS to VBZ if preceding tag is PRP. score= 2
+... trying from-tag: VBN
+m1: Change NNS to VBZ if preceding tag is PRP. score= 2
+... trying from-tag: WP
+m1: Change NNS to VBZ if preceding tag is PRP. score= 2
+... trying from-tag: ''
+m1: Change NNS to VBZ if preceding tag is PRP. score= 2
+... trying from-tag: #
+m1: Change NNS to VBZ if preceding tag is PRP. score= 2
+... trying from-tag: JJS
+m1: Change NNS to VBZ if preceding tag is PRP. score= 2
+m1: Change NNS to VBZ if preceding tag is PRP. score= 2
+====September 07, 2018 10:06:28 PM====
+====September 07, 2018 10:06:57 PM====
+Desccription:    NLTK Penn-Treebank initially tagged with most frequent tag
+Initial Tagging: 79301 [('Mr.', 'NNP'), ('Vinken', 'NNP'), ('is', 'VBZ'), ('chairman', 'NN'), ('of', 'IN'), ('Elsevier', 'NNP'), ('N.V.', 'NNP'), (',', ','), ('the', 'DT'), ('Dutch', 'JJ')]
+True Tagging:    79301 [('Mr.', 'NNP'), ('Vinken', 'NNP'), ('is', 'VBZ'), ('chairman', 'NN'), ('of', 'IN'), ('Elsevier', 'NNP'), ('N.V.', 'NNP'), (',', ','), ('the', 'DT'), ('Dutch', 'NNP')]
+Tag Set: 46 {'NNS', 'CC', '``', 'RP', 'PRP$', 'VBZ', 'IN', 'RBR', 'WP$', 'PDT', 'NNPS', 'RB', 'NN', 'NNP', '-NONE-', '$', 'JJ', 'LS', 'FW', 'WRB', 'UH', 'PRP', 'VBD', 'VBG', 'POS', 'RBS', 'WDT', '-RRB-', ':', 'SYM', 'CD', ',', 'MD', 'JJR', 'VBP', 'TO', 'VB', '-LRB-', '.', 'EX', 'DT', 'VBN', 'WP', "''", '#', 'JJS'}
+====September 07, 2018 10:06:57 PM====
+good z: [(('CC', ''), 1), (('PRP$', ''), 1), (('IN', ''), 1), (('NNP', ''), 12), (('JJ', ''), 1), (('.', ''), 3), (('DT', ''), 1)]
+bad z: [(('NNS', ''), 110), (('CC', ''), 215), (('``', ''), 52), (('RP', ''), 8), (('PRP$', ''), 255), (('VBZ', ''), 52), (('IN', ''), 865), (('WP$', ''), 7), (('NNPS', ''), 4), (('RB', ''), 40), (('NN', ''), 1298), (('NNP', ''), 401), (('-NONE-', ''), 85), (('JJ', ''), 1937), (('WRB', ''), 9), (('PRP', ''), 3), (('VBD', ''), 65), (('VBG', ''), 150), (('POS', ''), 271), (('WDT', ''), 1), (('-RRB-', ''), 4), ((':', ''), 12), (('CD', ''), 555), ((',', ''), 179), (('JJR', ''), 60), (('VBP', ''), 17), (('TO', ''), 51), (('VB', ''), 139), (('-LRB-', ''), 1), (('.', ''), 103), (('DT', ''), 2873), (('VBN', ''), 117), (('WP', ''), 4), (("''", ''), 31), (('JJS', ''), 42)]
+====September 07, 2018 10:06:57 PM====
+... trying from-tag: NNS
+NIL: Don't change the tag. score= 0
+m1: Change NNS to VBZ if preceding tag is PRP. score= 1
+... trying from-tag: CC
+m1: Change NNS to VBZ if preceding tag is PRP. score= 1
+... trying from-tag: ``
+m1: Change NNS to VBZ if preceding tag is PRP. score= 1
+... trying from-tag: RP
+m1: Change NNS to VBZ if preceding tag is PRP. score= 1
+... trying from-tag: PRP$
+m1: Change NNS to VBZ if preceding tag is PRP. score= 1
+... trying from-tag: VBZ
+m1: Change NNS to VBZ if preceding tag is PRP. score= 1
+... trying from-tag: IN
+m1: Change NNS to VBZ if preceding tag is PRP. score= 1
+... trying from-tag: RBR
+m1: Change NNS to VBZ if preceding tag is PRP. score= 1
+... trying from-tag: WP$
+m1: Change NNS to VBZ if preceding tag is PRP. score= 1
+... trying from-tag: PDT
+m1: Change NNS to VBZ if preceding tag is PRP. score= 1
+... trying from-tag: NNPS
+m1: Change NNS to VBZ if preceding tag is PRP. score= 1
+... trying from-tag: RB
+m1: Change NNS to VBZ if preceding tag is PRP. score= 1
+... trying from-tag: NN
+m1: Change NNS to VBZ if preceding tag is PRP. score= 1
+... trying from-tag: NNP
+m1: Change NNS to VBZ if preceding tag is PRP. score= 1
+... trying from-tag: -NONE-
+m1: Change NNS to VBZ if preceding tag is PRP. score= 1
+... trying from-tag: $
+m1: Change NNS to VBZ if preceding tag is PRP. score= 1
+... trying from-tag: JJ
+m1: Change NNS to VBZ if preceding tag is PRP. score= 1
+... trying from-tag: LS
+m1: Change NNS to VBZ if preceding tag is PRP. score= 1
+... trying from-tag: FW
+m1: Change NNS to VBZ if preceding tag is PRP. score= 1
+... trying from-tag: WRB
+m1: Change NNS to VBZ if preceding tag is PRP. score= 1
+... trying from-tag: UH
+m1: Change NNS to VBZ if preceding tag is PRP. score= 1
+... trying from-tag: PRP
+m1: Change NNS to VBZ if preceding tag is PRP. score= 1
+... trying from-tag: VBD
+m1: Change NNS to VBZ if preceding tag is PRP. score= 1
+... trying from-tag: VBG
+m1: Change NNS to VBZ if preceding tag is PRP. score= 1
+... trying from-tag: POS
+m1: Change NNS to VBZ if preceding tag is PRP. score= 1
+... trying from-tag: RBS
+m1: Change NNS to VBZ if preceding tag is PRP. score= 1
+... trying from-tag: WDT
+m1: Change NNS to VBZ if preceding tag is PRP. score= 1
+... trying from-tag: -RRB-
+m1: Change NNS to VBZ if preceding tag is PRP. score= 1
+... trying from-tag: :
+m1: Change NNS to VBZ if preceding tag is PRP. score= 1
+... trying from-tag: SYM
+m1: Change NNS to VBZ if preceding tag is PRP. score= 1
+... trying from-tag: CD
+m1: Change NNS to VBZ if preceding tag is PRP. score= 1
+... trying from-tag: ,
+m1: Change NNS to VBZ if preceding tag is PRP. score= 1
+... trying from-tag: MD
+m1: Change NNS to VBZ if preceding tag is PRP. score= 1
+... trying from-tag: JJR
+m1: Change NNS to VBZ if preceding tag is PRP. score= 1
+... trying from-tag: VBP
+m1: Change NNS to VBZ if preceding tag is PRP. score= 1
+... trying from-tag: TO
+m1: Change NNS to VBZ if preceding tag is PRP. score= 1
+... trying from-tag: VB
+m1: Change NNS to VBZ if preceding tag is PRP. score= 1
+... trying from-tag: -LRB-
+m1: Change NNS to VBZ if preceding tag is PRP. score= 1
+... trying from-tag: .
+m1: Change NNS to VBZ if preceding tag is PRP. score= 1
+... trying from-tag: EX
+m1: Change NNS to VBZ if preceding tag is PRP. score= 1
+... trying from-tag: DT
+m1: Change NNS to VBZ if preceding tag is PRP. score= 1
+... trying from-tag: VBN
+m1: Change NNS to VBZ if preceding tag is PRP. score= 1
+... trying from-tag: WP
+m1: Change NNS to VBZ if preceding tag is PRP. score= 1
+... trying from-tag: ''
+m1: Change NNS to VBZ if preceding tag is PRP. score= 1
+... trying from-tag: #
+m1: Change NNS to VBZ if preceding tag is PRP. score= 1
+... trying from-tag: JJS
+m1: Change NNS to VBZ if preceding tag is PRP. score= 1
+m1: Change NNS to VBZ if preceding tag is PRP. score= 1
+====September 07, 2018 10:11:43 PM====
+====September 07, 2018 10:12:09 PM====
+Desccription:    NLTK Penn-Treebank initially tagged with most frequent tag
+Initial Tagging: 79920 [('Pierre', 'NNP'), ('Vinken', 'NNP'), (',', ','), ('61', 'CD'), ('years', 'NNS'), ('old', 'JJ'), (',', ','), ('will', 'MD'), ('join', 'VB'), ('the', 'DT')]
+True Tagging:    79920 [('Pierre', 'NNP'), ('Vinken', 'NNP'), (',', ','), ('61', 'CD'), ('years', 'NNS'), ('old', 'JJ'), (',', ','), ('will', 'MD'), ('join', 'VB'), ('the', 'DT')]
+Tag Set: 46 {'NNS', 'CC', '``', 'RP', 'PRP$', 'VBZ', 'IN', 'RBR', 'WP$', 'PDT', 'NNPS', 'RB', 'NN', 'NNP', '-NONE-', '$', 'JJ', 'LS', 'FW', 'WRB', 'UH', 'PRP', 'VBD', 'VBG', 'POS', 'RBS', 'WDT', '-RRB-', ':', 'SYM', 'CD', ',', 'MD', 'JJR', 'VBP', 'TO', 'VB', '-LRB-', '.', 'EX', 'DT', 'VBN', 'WP', "''", '#', 'JJS'}
+====September 07, 2018 10:12:10 PM====
+good z: [(('CC', ''), 1), (('PRP$', ''), 1), (('IN', ''), 1), (('NNP', ''), 11), (('.', ''), 1), (('DT', ''), 1)]
+bad z: [(('NNS', ''), 113), (('CC', ''), 211), (('``', ''), 53), (('RP', ''), 8), (('PRP$', ''), 256), (('VBZ', ''), 60), (('IN', ''), 842), (('WP$', ''), 5), (('NNPS', ''), 7), (('RB', ''), 46), (('NN', ''), 1327), (('NNP', ''), 403), (('-NONE-', ''), 98), (('JJ', ''), 1945), (('WRB', ''), 10), (('PRP', ''), 3), (('VBD', ''), 70), (('VBG', ''), 157), (('POS', ''), 256), (('WDT', ''), 2), (('-RRB-', ''), 6), ((':', ''), 12), (('CD', ''), 576), ((',', ''), 181), (('JJR', ''), 58), (('VBP', ''), 20), (('TO', ''), 48), (('VB', ''), 118), (('-LRB-', ''), 2), (('.', ''), 94), (('DT', ''), 2882), (('VBN', ''), 118), (('WP', ''), 3), (("''", ''), 27), (('JJS', ''), 40)]
+====September 07, 2018 10:12:10 PM====
+... trying from-tag: NNS
+NIL: Don't change the tag. score= 0
+... trying from-tag: CC
+NIL: Don't change the tag. score= 0
+... trying from-tag: ``
+NIL: Don't change the tag. score= 0
+... trying from-tag: RP
+NIL: Don't change the tag. score= 0
+... trying from-tag: PRP$
+NIL: Don't change the tag. score= 0
+... trying from-tag: VBZ
+NIL: Don't change the tag. score= 0
+... trying from-tag: IN
+NIL: Don't change the tag. score= 0
+... trying from-tag: RBR
+NIL: Don't change the tag. score= 0
+... trying from-tag: WP$
+NIL: Don't change the tag. score= 0
+... trying from-tag: PDT
+NIL: Don't change the tag. score= 0
+... trying from-tag: NNPS
+NIL: Don't change the tag. score= 0
+... trying from-tag: RB
+NIL: Don't change the tag. score= 0
+... trying from-tag: NN
+NIL: Don't change the tag. score= 0
+... trying from-tag: NNP
+NIL: Don't change the tag. score= 0
+... trying from-tag: -NONE-
+NIL: Don't change the tag. score= 0
+... trying from-tag: $
+NIL: Don't change the tag. score= 0
+... trying from-tag: JJ
+NIL: Don't change the tag. score= 0
+... trying from-tag: LS
+NIL: Don't change the tag. score= 0
+... trying from-tag: FW
+NIL: Don't change the tag. score= 0
+... trying from-tag: WRB
+NIL: Don't change the tag. score= 0
+... trying from-tag: UH
+NIL: Don't change the tag. score= 0
+... trying from-tag: PRP
+NIL: Don't change the tag. score= 0
+... trying from-tag: VBD
+NIL: Don't change the tag. score= 0
+... trying from-tag: VBG
+NIL: Don't change the tag. score= 0
+... trying from-tag: POS
+NIL: Don't change the tag. score= 0
+... trying from-tag: RBS
+NIL: Don't change the tag. score= 0
+... trying from-tag: WDT
+NIL: Don't change the tag. score= 0
+... trying from-tag: -RRB-
+NIL: Don't change the tag. score= 0
+... trying from-tag: :
+NIL: Don't change the tag. score= 0
+... trying from-tag: SYM
+NIL: Don't change the tag. score= 0
+... trying from-tag: CD
+NIL: Don't change the tag. score= 0
+... trying from-tag: ,
+NIL: Don't change the tag. score= 0
+... trying from-tag: MD
+NIL: Don't change the tag. score= 0
+... trying from-tag: JJR
+NIL: Don't change the tag. score= 0
+... trying from-tag: VBP
+NIL: Don't change the tag. score= 0
+... trying from-tag: TO
+NIL: Don't change the tag. score= 0
+... trying from-tag: VB
+NIL: Don't change the tag. score= 0
+... trying from-tag: -LRB-
+NIL: Don't change the tag. score= 0
+... trying from-tag: .
+NIL: Don't change the tag. score= 0
+... trying from-tag: EX
+NIL: Don't change the tag. score= 0
+... trying from-tag: DT
+NIL: Don't change the tag. score= 0
+... trying from-tag: VBN
+NIL: Don't change the tag. score= 0
+... trying from-tag: WP
+NIL: Don't change the tag. score= 0
+... trying from-tag: ''
+NIL: Don't change the tag. score= 0
+... trying from-tag: #
+NIL: Don't change the tag. score= 0
+... trying from-tag: JJS
+NIL: Don't change the tag. score= 0
+NIL: Don't change the tag. score= 0
+====September 07, 2018 10:16:54 PM====
