@@ -199,6 +199,10 @@ if __name__ == '__main__':
     from NLP_2ed_ch_5_problems import get_word_tag_counts
     from NLP_2ed_ch_5_problems import get_most_frequent_tag
     from random import random as rand
+    from datetime import datetime
+
+    nowStr = datetime.now().strftime("%B %d, %Y %I:%M:%S %p")
+    print("====" + nowStr + "====")
 
     # NLTK treebank corpus tests.
     tb_training_sents, tb_test_sents = split_train_test(tb.tagged_sents())
@@ -231,6 +235,9 @@ if __name__ == '__main__':
     tb_test_tagged_words_MF = [ (w, tb_most_frequent_tags[w],)
                                 for w, tag in tb_test_tagged_words]
 
+    nowStr = datetime.now().strftime("%B %d, %Y %I:%M:%S %p")
+    print("====" + nowStr + "====")
+
     # Test class BrillTBL
     tagger = BrillTBL(tb_training_tagged_words_MF,
                       tb_training_tagged_words,
@@ -242,6 +249,9 @@ if __name__ == '__main__':
     print("True Tagging:   ", len(tagger.tagged_words_true),
           tagger.tagged_words_true[:10])
     print("Tag Set:", len(tagger.tagset), tagger.tagset)
+
+    nowStr = datetime.now().strftime("%B %d, %Y %I:%M:%S %p")
+    print("====" + nowStr + "====")
 
     # Test test_transform_m1()
     count_good_transforms = { (tag, '') : 0 for tag in tagger.tagset }
@@ -259,10 +269,16 @@ if __name__ == '__main__':
                 if count_bad_transforms[k] > 0 ]
     print('good z:', good_z)
     print('bad z:', bad_z)
-    
+
+    nowStr = datetime.now().strftime("%B %d, %Y %I:%M:%S %p")
+    print("====" + nowStr + "====")
+
     # Test get_best_instance()
-    best_transform_DEFAULT = tagger.get_best_instance(DEFAULT_TEMPLATE)
-    typeT, fT, tT, zT, wT, desc = best_transform_DEFAULT[0]
-    best_score_DEFAULT = best_transform_DEFAULT[1]
-    tagger.printTransform(best_transform_DEFAULT)
-    
+    for k in range(5):
+        best_transform_DEFAULT = tagger.get_best_instance(DEFAULT_TEMPLATE)
+        typeT, fT, tT, zT, wT, desc = best_transform_DEFAULT[0]
+        best_score_DEFAULT = best_transform_DEFAULT[1]
+        tagger.printTransform(best_transform_DEFAULT)
+        nowStr = datetime.now().strftime("%B %d, %Y %I:%M:%S %p")
+        print("====" + nowStr + "====")
+
