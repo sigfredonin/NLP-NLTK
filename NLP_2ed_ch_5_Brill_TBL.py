@@ -204,77 +204,79 @@ if __name__ == '__main__':
     nowStr = datetime.now().strftime("%B %d, %Y %I:%M:%S %p")
     print("====" + nowStr + "====")
 
-    # NLTK treebank corpus tests.
-    tb_training_sents, tb_test_sents = split_train_test(tb.tagged_sents())
-    tb_word_tag_counts = get_word_tag_counts(tb.tagged_sents())
-    tb_word_tags_count = sum(tb_word_tag_counts[w][tag]
-                       for w in tb_word_tag_counts
-                       for tag in tb_word_tag_counts[w])
-    tb_training_tag_counts = get_word_tag_counts(tb_training_sents)
-    tb_training_tags_count = sum(tb_training_tag_counts[w][tag]
-                       for w in tb_training_tag_counts
-                       for tag in tb_training_tag_counts[w])
-    tb_test_tag_counts = get_word_tag_counts(tb_test_sents)
-    tb_test_tags_count = sum(tb_test_tag_counts[w][tag]
-                       for w in tb_test_tag_counts
-                       for tag in tb_test_tag_counts[w])
-    tb_tagged_words = [ (w, tag, ) for s in tb.tagged_sents()
-                                   for w, tag in s]
-    tb_training_tagged_words = [ (w, tag, ) for s in tb_training_sents
-                                            for w, tag in s]
-    tb_test_tagged_words = [ (w, tag, ) for s in tb_test_sents
-                                        for w, tag in s]
-    tb_tagset = set(tag for word, tag in tb_tagged_words)
-    tb_training_tagged_words_NN = [ (w, 'NN',)
-                                    for w, tag in tb_training_tagged_words]
-    tb_test_tagged_words_NN = [ (w, 'NN',)
-                                for w, tag in tb_test_tagged_words]
-    tb_most_frequent_tags = get_most_frequent_tag(tb_word_tag_counts)
-    tb_training_tagged_words_MF = [ (w, tb_most_frequent_tags[w],)
-                                    for w, tag in tb_training_tagged_words]
-    tb_test_tagged_words_MF = [ (w, tb_most_frequent_tags[w],)
-                                for w, tag in tb_test_tagged_words]
-
-    nowStr = datetime.now().strftime("%B %d, %Y %I:%M:%S %p")
-    print("====" + nowStr + "====")
-
-    # Test class BrillTBL
-    tagger = BrillTBL(tb_training_tagged_words_MF,
-                      tb_training_tagged_words,
-                      tb_tagset,
-                      "NLTK Penn-Treebank initially tagged with most frequent tag")
-    print("Desccription:   ", tagger.name)
-    print("Initial Tagging:", len(tagger.tagged_words),
-          tagger.tagged_words[:10])
-    print("True Tagging:   ", len(tagger.tagged_words_true),
-          tagger.tagged_words_true[:10])
-    print("Tag Set:", len(tagger.tagset), tagger.tagset)
-
-    nowStr = datetime.now().strftime("%B %d, %Y %I:%M:%S %p")
-    print("====" + nowStr + "====")
-
-    # Test test_transform_m1()
-    count_good_transforms = { (tag, '') : 0 for tag in tagger.tagset }
-    count_good_transforms[(START_TAG, '')] = 0
-    count_bad_transforms  = { (tag, '') : 0 for tag in tagger.tagset }
-    count_bad_transforms[(START_TAG, '')] = 0
-    tagger.test_transform_m1('NN', 'NNP',
-                          count_good_transforms, count_bad_transforms)
-    good_z = [ (k,count_good_transforms[k])
-                for k in count_good_transforms
-                if count_good_transforms[k] > 0 ]
-    
-    bad_z  = [ (k,count_bad_transforms[k])
-                for k in count_bad_transforms
-                if count_bad_transforms[k] > 0 ]
-    print('good z:', good_z)
-    print('bad z:', bad_z)
-
-    nowStr = datetime.now().strftime("%B %d, %Y %I:%M:%S %p")
-    print("====" + nowStr + "====")
-
-    # Test get_best_instance()
+    # Run the tests 5 times
     for k in range(5):
+
+        # NLTK treebank corpus tests.
+        tb_training_sents, tb_test_sents = split_train_test(tb.tagged_sents())
+        tb_word_tag_counts = get_word_tag_counts(tb.tagged_sents())
+        tb_word_tags_count = sum(tb_word_tag_counts[w][tag]
+                           for w in tb_word_tag_counts
+                           for tag in tb_word_tag_counts[w])
+        tb_training_tag_counts = get_word_tag_counts(tb_training_sents)
+        tb_training_tags_count = sum(tb_training_tag_counts[w][tag]
+                           for w in tb_training_tag_counts
+                           for tag in tb_training_tag_counts[w])
+        tb_test_tag_counts = get_word_tag_counts(tb_test_sents)
+        tb_test_tags_count = sum(tb_test_tag_counts[w][tag]
+                           for w in tb_test_tag_counts
+                           for tag in tb_test_tag_counts[w])
+        tb_tagged_words = [ (w, tag, ) for s in tb.tagged_sents()
+                                       for w, tag in s]
+        tb_training_tagged_words = [ (w, tag, ) for s in tb_training_sents
+                                                for w, tag in s]
+        tb_test_tagged_words = [ (w, tag, ) for s in tb_test_sents
+                                            for w, tag in s]
+        tb_tagset = set(tag for word, tag in tb_tagged_words)
+        tb_training_tagged_words_NN = [ (w, 'NN',)
+                                        for w, tag in tb_training_tagged_words]
+        tb_test_tagged_words_NN = [ (w, 'NN',)
+                                    for w, tag in tb_test_tagged_words]
+        tb_most_frequent_tags = get_most_frequent_tag(tb_word_tag_counts)
+        tb_training_tagged_words_MF = [ (w, tb_most_frequent_tags[w],)
+                                        for w, tag in tb_training_tagged_words]
+        tb_test_tagged_words_MF = [ (w, tb_most_frequent_tags[w],)
+                                    for w, tag in tb_test_tagged_words]
+
+        nowStr = datetime.now().strftime("%B %d, %Y %I:%M:%S %p")
+        print("====" + nowStr + "====")
+
+        # Test class BrillTBL
+        tagger = BrillTBL(tb_training_tagged_words_MF,
+                          tb_training_tagged_words,
+                          tb_tagset,
+                          "NLTK Penn-Treebank initially tagged with most frequent tag")
+        print("Desccription:   ", tagger.name)
+        print("Initial Tagging:", len(tagger.tagged_words),
+              tagger.tagged_words[:10])
+        print("True Tagging:   ", len(tagger.tagged_words_true),
+              tagger.tagged_words_true[:10])
+        print("Tag Set:", len(tagger.tagset), tagger.tagset)
+
+        nowStr = datetime.now().strftime("%B %d, %Y %I:%M:%S %p")
+        print("====" + nowStr + "====")
+
+        # Test test_transform_m1()
+        count_good_transforms = { (tag, '') : 0 for tag in tagger.tagset }
+        count_good_transforms[(START_TAG, '')] = 0
+        count_bad_transforms  = { (tag, '') : 0 for tag in tagger.tagset }
+        count_bad_transforms[(START_TAG, '')] = 0
+        tagger.test_transform_m1('NN', 'NNP',
+                              count_good_transforms, count_bad_transforms)
+        good_z = [ (k,count_good_transforms[k])
+                    for k in count_good_transforms
+                    if count_good_transforms[k] > 0 ]
+        
+        bad_z  = [ (k,count_bad_transforms[k])
+                    for k in count_bad_transforms
+                    if count_bad_transforms[k] > 0 ]
+        print('good z:', good_z)
+        print('bad z:', bad_z)
+
+        nowStr = datetime.now().strftime("%B %d, %Y %I:%M:%S %p")
+        print("====" + nowStr + "====")
+
+        # Test get_best_instance()
         best_transform_DEFAULT = tagger.get_best_instance(DEFAULT_TEMPLATE)
         typeT, fT, tT, zT, wT, desc = best_transform_DEFAULT[0]
         best_score_DEFAULT = best_transform_DEFAULT[1]
