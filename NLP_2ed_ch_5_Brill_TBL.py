@@ -147,7 +147,8 @@ class BrillTBL:
         count_bad_transforms[(START_TAG, '')] = 0
         # iterate over all tag pairs ...
         for fromTag in self.tagset:
-            print("... trying tag:", fromTag)            
+            print("... trying from-tag:", fromTag)
+            self.printTransform(best_transform)
             for toTag in self.tagset:
                 # test the default transform, context just preceding tag
                 self.test_transform_m1(fromTag, toTag,
@@ -195,10 +196,24 @@ if __name__ == '__main__':
     import nltk
     from nltk.corpus import treebank as tb
     from NLP_2ed_ch_5_problems import split_train_test
+    from NLP_2ed_ch_5_problems import get_word_tag_counts
+    from NLP_2ed_ch_5_problems import get_most_frequent_tag
     from random import random as rand
 
     # NLTK treebank corpus tests.
     tb_training_sents, tb_test_sents = split_train_test(tb.tagged_sents())
+    tb_word_tag_counts = get_word_tag_counts(tb.tagged_sents())
+    tb_word_tags_count = sum(tb_word_tag_counts[w][tag]
+                       for w in tb_word_tag_counts
+                       for tag in tb_word_tag_counts[w])
+    tb_training_tag_counts = get_word_tag_counts(tb_training_sents)
+    tb_training_tags_count = sum(tb_training_tag_counts[w][tag]
+                       for w in tb_training_tag_counts
+                       for tag in tb_training_tag_counts[w])
+    tb_test_tag_counts = get_word_tag_counts(tb_test_sents)
+    tb_test_tags_count = sum(tb_test_tag_counts[w][tag]
+                       for w in tb_test_tag_counts
+                       for tag in tb_test_tag_counts[w])
     tb_tagged_words = [ (w, tag, ) for s in tb.tagged_sents()
                                    for w, tag in s]
     tb_training_tagged_words = [ (w, tag, ) for s in tb_training_sents
@@ -210,12 +225,17 @@ if __name__ == '__main__':
                                     for w, tag in tb_training_tagged_words]
     tb_test_tagged_words_NN = [ (w, 'NN',)
                                 for w, tag in tb_test_tagged_words]
+    tb_most_frequent_tags = get_most_frequent_tag(tb_word_tag_counts)
+    tb_training_tagged_words_MF = [ (w, tb_most_frequent_tags[w],)
+                                    for w, tag in tb_training_tagged_words]
+    tb_test_tagged_words_MF = [ (w, tb_most_frequent_tags[w],)
+                                for w, tag in tb_test_tagged_words]
 
     # Test class BrillTBL
-    tagger = BrillTBL(tb_training_tagged_words_NN,
+    tagger = BrillTBL(tb_training_tagged_words_MF,
                       tb_training_tagged_words,
                       tb_tagset,
-                      "NLTK Penn-Treebank initially tagged NN")
+                      "NLTK Penn-Treebank initially tagged with most frequent tag")
     print("Desccription:   ", tagger.name)
     print("Initial Tagging:", len(tagger.tagged_words),
           tagger.tagged_words[:10])
