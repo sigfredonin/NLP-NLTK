@@ -77,7 +77,7 @@ class BrillTBL:
         The learned rules can be applied with the "tag()" method
         to another corpus.
         """
-        minimum_change = 4
+        minimum_change = 1
         last_score = 0
         while True:
             best_transform = self.get_best_transform()
