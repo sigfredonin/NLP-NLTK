@@ -77,7 +77,7 @@ class BrillTBL:
         The learned rules can be applied with the "tag()" method
         to another corpus.
         """
-        minimum_change = 10
+        minimum_change = 4
         last_score = 0
         while True:
             best_transform = self.get_best_transform()
@@ -240,6 +240,13 @@ if __name__ == '__main__':
                                         for w, tag in tb_training_tagged_words]
         tb_test_tagged_words_MF = [ (w, tb_most_frequent_tags[w],)
                                     for w, tag in tb_test_tagged_words]
+        tb_training_mistagged_MF = [ (tb_training_tagged_words_MF[i][0], \
+                                      tb_training_tagged_words_MF[i][1], \
+                                      tb_training_tagged_words[i][1]) \
+                for i in range(len(tb_training_tagged_words_MF)) \
+                if tb_training_tagged_words_MF[i][1] \
+                   != tb_training_tagged_words[i][1] \
+	    ]
 
         nowStr = datetime.now().strftime("%B %d, %Y %I:%M:%S %p")
         print("====" + nowStr + "====")
@@ -255,6 +262,8 @@ if __name__ == '__main__':
         print("True Tagging:   ", len(tagger.tagged_words_true),
               tagger.tagged_words_true[:10])
         print("Tag Set:", len(tagger.tagset), tagger.tagset)
+        print("---")
+        print("Count incorrectly tagged words:", len(tb_training_mistagged_words))
 
         nowStr = datetime.now().strftime("%B %d, %Y %I:%M:%S %p")
         print("====" + nowStr + "====")
