@@ -77,17 +77,19 @@ class BrillTBL:
         The learned rules can be applied with the "tag()" method
         to another corpus.
         """
-        minimum_change = 1
+        minimum = 1
         last_score = 0
         while True:
             best_transform = self.get_best_transform()
+            score = best_transform[1]
+            change_in_score = score - last_score
+            if score < minimum:
+                break
+            last_score = score
             self.apply_transform(best_transform)
             self.transforms_queue += [ best_transform ]
             self.printTransform(best_transform)
-            change_in_score = best_transform[1] - last_score
-            if change_in_score < minimum_change:
-                break
-            last_score = best_transform[1]
+            print("----------")
         print("==> ", end='')
         self.printTransform(best_transform)
         return self.transforms_queue
@@ -145,15 +147,17 @@ class BrillTBL:
         """
         best_transform = ( NIL_TEMPLATE, 0, )
         # counts of good and bad results for a transform instance
-        count_good_transforms = { (tag, '') : 0 for tag in self.tagset }
-        count_good_transforms[(START_TAG, '')] = 0
-        count_bad_transforms  = { (tag, '') : 0 for tag in self.tagset }
-        count_bad_transforms[(START_TAG, '')] = 0
         # iterate over all tag pairs ...
         for fromTag in self.tagset:
-            print("... trying from-tag:", fromTag)
+            print(".", end='')
             for toTag in self.tagset:
                 # test the default transform, context just preceding tag
+                count_good_transforms = { (tag, '') : 0
+                                          for tag in self.tagset }
+                count_good_transforms[(START_TAG, '')] = 0
+                count_bad_transforms  = { (tag, '') : 0
+                                          for tag in self.tagset }
+                count_bad_transforms[(START_TAG, '')] = 0
                 self.test_transform_m1(fromTag, toTag,
                         count_good_transforms, count_bad_transforms)
                 # Find the best tags z and w among those encountered,
@@ -173,7 +177,9 @@ class BrillTBL:
                                  DEFAULT_TEMPLATE[5]
                                ]
                     best_transform = ( instance, bestScore, )
+                    print()
                     self.printTransform(best_transform)
+        print()
         return best_transform
 
         # Apply a transform instance to the corpus,
@@ -184,12 +190,15 @@ class BrillTBL:
         """
         type, fromTag, toTag, zTag, wTag, desc = transform[0]
         previous_tag = START_TAG
+        count_changes = 0
         for pos in range(len(self.tagged_words)):
             word, current_tag = self.tagged_words[pos]
             if pos > 0:
                 previous_tag = self.tagged_words[pos-1][1]
             if current_tag == fromTag and previous_tag == zTag:
                 self.tagged_words[pos] = ( word, toTag, )
+                count_changes += 1
+        print("-=-=-> changed ", count_changes, " tags")
 
 # ------------------------------------------------------------------------
 # Tests ---
@@ -204,11 +213,13 @@ if __name__ == '__main__':
     from random import random as rand
     from datetime import datetime
 
-    nowStr = datetime.now().strftime("%B %d, %Y %I:%M:%S %p")
-    print("====" + nowStr + "====")
 
     # Run the tests 5 times
     for k in range(5):
+
+        print("+++ TEST ", k+1, "+++")
+        nowStr = datetime.now().strftime("%B %d, %Y %I:%M:%S %p")
+        print("====" + nowStr + "====")
 
         # NLTK treebank corpus tests.
         tb_training_sents, tb_test_sents = split_train_test(tb.tagged_sents())
@@ -263,7 +274,8 @@ if __name__ == '__main__':
               tagger.tagged_words_true[:10])
         print("Tag Set:", len(tagger.tagset), tagger.tagset)
         print("---")
-        print("Count incorrectly tagged words:", len(tb_training_mistagged_MF))
+        print("Count incorrectly tagged words:", len(tb_training_mistagged_MF),
+              "of", len(tb_training_tagged_words_MF))
 
         nowStr = datetime.now().strftime("%B %d, %Y %I:%M:%S %p")
         print("====" + nowStr + "====")
