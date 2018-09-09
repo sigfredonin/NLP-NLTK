@@ -263,7 +263,7 @@ if __name__ == '__main__':
               tagger.tagged_words_true[:10])
         print("Tag Set:", len(tagger.tagset), tagger.tagset)
         print("---")
-        print("Count incorrectly tagged words:", len(tb_training_mistagged_words))
+        print("Count incorrectly tagged words:", len(tb_training_mistagged_MF))
 
         nowStr = datetime.now().strftime("%B %d, %Y %I:%M:%S %p")
         print("====" + nowStr + "====")
