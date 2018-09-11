@@ -7,6 +7,8 @@ Sig Nin
 5 Sep 2018
 """
 
+from collections import defaultdict
+
 # Each template is [ type, tagFrom, tagTo, tagZ, tagW, description ]
 # where the description is a format string with places for the tags used.
 # The tagger is initialized with the simple template used in the
@@ -55,11 +57,17 @@ class BrillTBL:
         """
         self.tagged_words = tagged_words_initial
         self.tagged_words_true = tagged_words_true
+        self.set_tags_from_tagged_words()
         self.tagset = tagset
         self.name = name
         self.templates = [ DEFAULT_TEMPLATE ]
         self.transforms_queue = []
 
+    def set_tags_from_tagged_words(self):
+        self.tags_init = [ tag for word, tag in self.tagged_words ]
+        self.tags_true = [ tag for word, tag in self.tagged_words_true ]
+        self.tags = list(zip(self.tags_init, self.tags_true))
+        
     # Display a transform instance
     def printTransform(self, transform):
         typeT, fromTag, toTag, zTag, wTag, desc = transform[0]
@@ -87,6 +95,7 @@ class BrillTBL:
                 break
             last_score = score
             self.apply_transform(best_transform)
+            self.set_tags_from_tagged_words()
             self.transforms_queue += [ best_transform ]
             self.printTransform(best_transform)
             print("----------")
@@ -111,7 +120,7 @@ class BrillTBL:
         return best_transform
 
     # Test transform at every position across the corpus
-    def test_transform_m1(self, fromTag, toTag,
+    def test_transform_m1_loopy(self, fromTag, toTag,
             count_good_transforms, count_bad_transforms):
         """
         Tests the effect of the transform with the given tags.
@@ -134,7 +143,7 @@ class BrillTBL:
 
 
     # Get the best instance of a transform.
-    def get_best_instance(self, template):
+    def get_best_instance_loopy(self, template):
         """
         The best transform is an instance of a template
             [ type fromTag toTag zTag wTag description ]
@@ -182,8 +191,79 @@ class BrillTBL:
         print()
         return best_transform
 
-        # Apply a transform instance to the corpus,
-        # updating the current tagging.
+    # Test transform at every position across the corpus
+    def test_transform_m1(self):
+        """
+        Tests the effect of the transform across the corpus.
+        Scan the corpus and at each position test the effect
+        of the transform.  Record the effect in the counts,
+        good and bad, for the relevant tags z and w.
+        """
+        count_good_transforms = defaultdict(int)
+        count_bad_transforms  = defaultdict(int)
+        preceding_tag = START_TAG
+        for current_tag, correct_tag in self.tags:
+            for toTag in self.tagset:
+                transform_id = (current_tag, toTag, preceding_tag, '',)
+                # Apply the default template criteria
+                if correct_tag == current_tag:
+                    count_bad_transforms[transform_id] += 1
+                if correct_tag == toTag:
+                    count_good_transforms[transform_id] += 1
+            preceding_tag = current_tag
+        return count_good_transforms, count_bad_transforms
+
+    # Get best instance of a transform
+    def get_best_instance(self, template):
+        """
+        The best transform is an instance of a template
+            [ type fromTag toTag zTag wTag description ]
+        with the fromTag and toTag, and depending on the template type,
+        the zTag and wTag filled in with specific tags,
+        that produces the best overall improvement in the
+        current tagging compared to the "ground truth" tagging.
+        Input: a template
+        Output: the best instance: ( instance, score )
+        """
+        best_transform = ( NIL_TEMPLATE, 0, )
+        count_good_transforms, count_bad_transforms = self.test_transform_m1()
+        for fromTag in self.tagset:
+            print(".", end='')
+            for toTag in self.tagset:
+                # Find the best tags z and w among those encountered,
+                # the one that produced the most improvements in the
+                # current tagging.
+                bestZ = START_TAG
+                bestScore = 0
+                for zTag in self.tagset: # for now, just iterate over z
+                    transform_id = ( fromTag, toTag, zTag, '', )
+                    if transform_id in count_good_transforms:
+                        count_good = count_good_transforms[transform_id]
+                    else:
+                        count_good = 0 # avoid lengthening dictionary
+                    if transform_id in count_bad_transforms:
+                        count_bad = count_bad_transforms[transform_id]
+                    else:
+                        count_bad = 0 # avoid lengthening dictionary
+                    score =  count_good - count_bad
+                    if score > bestScore:
+                        bestScore = score
+                        bestZ = zTag
+                if bestScore > best_transform[1]:
+                    instance = [ DEFAULT_TEMPLATE[0],
+                                 fromTag, toTag, bestZ, '',
+                                 DEFAULT_TEMPLATE[5]
+                               ]
+                    best_transform = ( instance, bestScore, )
+                    print()
+                    self.printTransform(best_transform)
+        print()
+        return best_transform
+
+        
+
+    # Apply a transform instance to the corpus,
+    # updating the current tagging.
     def apply_transform(self, transform):
         """
         Apply the transform with context just the preceding tag.
@@ -300,12 +380,16 @@ if __name__ == '__main__':
         print("====" + nowStr + "====")
 
         # Test test_transform_m1()
+        """
         count_good_transforms = { (tag, '') : 0 for tag in tagger.tagset }
         count_good_transforms[(START_TAG, '')] = 0
         count_bad_transforms  = { (tag, '') : 0 for tag in tagger.tagset }
         count_bad_transforms[(START_TAG, '')] = 0
-        tagger.test_transform_m1('NN', 'NNP',
+        tagger.test_transform_m1_loopy('NN', 'NNP',
                               count_good_transforms, count_bad_transforms)
+        """
+        count_good_transforms, count_bad_transforms = \
+            tagger.test_transform_m1()
         good_z = [ (k,count_good_transforms[k])
                     for k in count_good_transforms
                     if count_good_transforms[k] > 0 ]
@@ -313,8 +397,8 @@ if __name__ == '__main__':
         bad_z  = [ (k,count_bad_transforms[k])
                     for k in count_bad_transforms
                     if count_bad_transforms[k] > 0 ]
-        print('good z:', good_z)
-        print('bad z:', bad_z)
+        print('count good z:', len(good_z))
+        print('count bad z:', len(bad_z))
 
         nowStr = datetime.now().strftime("%B %d, %Y %I:%M:%S %p")
         print("====" + nowStr + "====")
