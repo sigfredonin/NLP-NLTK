@@ -200,6 +200,20 @@ class BrillTBL:
                 count_changes += 1
         print("-=-=-> changed ", count_changes, " tags")
 
+    def get_mistagged_words(self):
+        """
+        Return a list of the currently mistagged words,
+            [ ( word, incorrect tag, true tag, ), ... ]
+        """
+        mistagged = [ (self.tagged_words[i][0], \
+                       self.tagged_words[i][1], \
+                       self.tagged_words_true[i][1]) \
+                for i in range(len(self.tagged_words)) \
+                if self.tagged_words[i][1] \
+                   != self.tagged_words_true[i][1] \
+	    ]
+        return mistagged
+
 # ------------------------------------------------------------------------
 # Tests ---
 # ------------------------------------------------------------------------
@@ -274,9 +288,14 @@ if __name__ == '__main__':
               tagger.tagged_words_true[:10])
         print("Tag Set:", len(tagger.tagset), tagger.tagset)
         print("---")
-        print("Count incorrectly tagged words:", len(tb_training_mistagged_MF),
-              "of", len(tb_training_tagged_words_MF))
-
+        mistagged_words_initial = tagger.get_mistagged_words()
+        print("Initial count incorrectly tagged words:",
+              len(mistagged_words_initial),
+              "of", len(tagger.tagged_words))
+        error_rate_initial = (1.0 * len(mistagged_words_initial)) \
+            / len(tagger.tagged_words)
+        print("Initial error rate:", error_rate_initial)
+              
         nowStr = datetime.now().strftime("%B %d, %Y %I:%M:%S %p")
         print("====" + nowStr + "====")
 
@@ -303,8 +322,16 @@ if __name__ == '__main__':
         # Test learn()
         transform_sequence = tagger.learn()
         print("---- TRANSFORM SEQUENCE ----")
+        print("Rules found:", len(transform_sequence))
         for rule in transform_sequence:
             tagger.printTransform(rule)
+        mistagged_words_final = tagger.get_mistagged_words()
+        print("Final count incorrectly tagged words:",
+              len(mistagged_words_final),
+              "of", len(tagger.tagged_words))
+        error_rate_final = (1.0 * len(mistagged_words_final)) \
+              / len(tagger.tagged_words)
+        print("Final error rate:", error_rate_final)
         nowStr = datetime.now().strftime("%B %d, %Y %I:%M:%S %p")
         print("====" + nowStr + "====")
 
